@@ -19,7 +19,8 @@ angular.module('frontendApp')
              * TODO: Implement the function.
              * It should get the correct search value, strip it, and call the
              * good Factory's function. This means defining the call back when
-             * the service returns something.
+             * the service returns something. The callback essentially means
+             * generating the word cloud from the response of the service.
              */
         };
 
@@ -32,7 +33,8 @@ angular.module('frontendApp')
              * TODO: Implement the function.
              * It should get the correct search value, strip it, and call the
              * good Factory's function. This means defining the call back when
-             * the service returns something.
+             * the service returns something. The callback essentially means
+             * generating the word cloud from the response of the service.
              */
         };
 
