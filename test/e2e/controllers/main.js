@@ -14,7 +14,10 @@ describe('Application Homepage', function() {
             .toEqual('PaperCloud');
     });
 
-    it('', function() {
-
+    it('should have a keyword search bar', function() {
+        var searchKeyword = browser.driver.findElement(by.css(
+            '#keyword-search'));
+        expect(searchKeyword)
+            .toBeTruthy();
     });
 });
