@@ -27,4 +27,19 @@ describe('Application Homepage', function() {
         expect(searchName)
             .toBeTruthy();
     });
+
+    it('should have a working name search button', function() {
+        var btn = browser.driver.findElement(by.id('name-button'));
+        expect(btn)
+            .toBeTruthy();
+        expect(btn.getAttribute('ng-click'))
+            .toBe('launchNameSearch');
+    });
+    it('should have a working keyword search button', function() {
+        var btn = browser.driver.findElement(by.id('keyword-button'));
+        expect(btn)
+            .toBeTruthy();
+        expect(btn.getAttribute('ng-click'))
+            .toBe('launchKeywordSearch');
+    });
 });
