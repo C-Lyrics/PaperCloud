@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('MainCtrl', function($scope) {
+    .controller('MainCtrl', function($scope, Keyword, Researcher) {
 
         /**
          * [launchNameSearch description]
