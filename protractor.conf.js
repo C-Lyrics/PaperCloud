@@ -11,7 +11,9 @@ exports.config = {
     ],
 
     multiCapabilities: [{
-        'browserName': 'chrome'
+        'browserName': 'phantomjs',
+        'browserName': 'chrome',
+        // 'browserName': 'firefox',
     }],
 
 

@@ -9,35 +9,31 @@
  * Main module of the application.
  */
 angular
-  .module('frontendApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/history', {
-        templateUrl: 'views/history.html',
-        controller: 'HistoryCtrl'
-      })
-      .when('/listing', {
-        templateUrl: 'views/listing.html',
-        controller: 'ListingCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .module('frontendApp', [
+        'ngAnimate',
+        'ngAria',
+        'ngCookies',
+        'ngMessages',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch'
+    ])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/history', {
+                templateUrl: 'views/history.html',
+                controller: 'HistoryCtrl'
+            })
+            .when('/listing', {
+                templateUrl: 'views/listing.html',
+                controller: 'ListingCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });

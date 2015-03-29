@@ -1,22 +1,16 @@
 'use strict';
 
-describe('Controller: HistoryCtrl', function () {
-
-  // load the controller's module
-  beforeEach(module('frontendApp'));
-
-  var HistoryCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    HistoryCtrl = $controller('HistoryCtrl', {
-      $scope: scope
+describe('Application Homepage', function() {
+    beforeEach(function() {
+        browser.get('http://localhost:9000');
+        browser.driver.sleep(3000);
+        browser.ignoreSynchronization = true;
+        return browser.driver.sleep(0);
     });
-  }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+    it('should have a gray background', function() {
+        expect(browser.driver.findElement(by.css('body'))
+            .getCssValue('background-color'))
+            .toBe('rgba(211, 211, 211, 1)');
+    });
 });

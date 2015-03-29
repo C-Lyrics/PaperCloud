@@ -1,22 +1,12 @@
 'use strict';
 
-describe('Controller: AboutCtrl', function () {
-
-  // load the controller's module
-  beforeEach(module('frontendApp'));
-
-  var AboutCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    AboutCtrl = $controller('AboutCtrl', {
-      $scope: scope
+describe('Application Homepage', function() {
+    beforeEach(function() {
+        browser.get('http://localhost:9000');
+        browser.driver.sleep(3000);
+        browser.ignoreSynchronization = true;
+        return browser.driver.sleep(0);
     });
-  }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+    it('should have a gray background', function() {});
 });
