@@ -9,7 +9,7 @@ describe('Application Homepage', function() {
     });
 
     it('the title should be PaperCloud', function() {
-        var appName = browser.driver.findElement(by.css('body'));
+        var appName = browser.driver.findElement(by.css('h3.text-muted'));
         expect(appName.getText())
             .toEqual('PaperCloud');
     });
@@ -18,6 +18,13 @@ describe('Application Homepage', function() {
         var searchKeyword = browser.driver.findElement(by.css(
             '#keyword-search'));
         expect(searchKeyword)
+            .toBeTruthy();
+    });
+
+    it('should have a name search bar', function() {
+        var searchName = browser.driver.findElement(by.css(
+            '#name-search'));
+        expect(searchName)
             .toBeTruthy();
     });
 });
