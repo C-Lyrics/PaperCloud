@@ -8,16 +8,20 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-  .factory('Researcher', function () {
-    // Service logic
-    // ...
+    .factory('Researcher', function(Server) {
+        // Service logic
+        // ...
 
-    var meaningOfLife = 42;
+        var meaningOfLife = 42;
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+        // Public API here
+        return {
+            getAutocomplete: function(text, callback) {
+
+            },
+
+            getPapers: function(name, callback) {
+
+            },
+        };
+    });
