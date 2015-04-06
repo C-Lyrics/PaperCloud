@@ -13,26 +13,10 @@ angular.module('frontendApp')
             restrict: 'EACM',
             replace: false,
             scope: {
-                // words: '=words',
+                words: '=words',
             },
             link: function postLink(scope, element, attrs) {
                 scope.bg = 'white';
-                scope.words = [{
-                    text: 'Hey',
-                    weight: 12,
-                }, {
-                    text: 'Ha',
-                    weight: 1,
-                }, {
-                    text: 'Hu',
-                    weight: 2,
-                }, {
-                    text: 'Ho',
-                    weight: 8,
-                }, {
-                    text: 'Hi',
-                    weight: 9,
-                }, ];
                 scope.$watch('words', function(oldVal, newVal) {
                     if (scope.words && scope.words.length) {
                         // TODO: Remove this line.
