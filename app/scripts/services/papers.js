@@ -91,6 +91,18 @@ angular.module('frontendApp')
              * }, ]                      An array of words objects, ready for the WC.
              */
             getTopWords: function(nbTopWords, papers) {
+                var words;
+                papers = papers.join(' ');
+                words = papers.split(' ');
+                words = removeDuplicates(words);
+                words = words.map(function(curr, idx) {
+                    return {
+                        text: curr,
+                        weight: countFrequency(curr, papers),
+                        link: ''
+                    };
+                });
+                return selectMostFrequents(words, nbTopWords);
 
             },
         };
