@@ -9,29 +9,14 @@
  */
 angular.module('frontendApp')
     .controller('MainCtrl', function($scope, Keyword, Researcher) {
-
-        $scope.words = [{
-            text: 'asdf',
-            weight: 4,
-        }, {
-            text: 'asdf',
-            weight: 4,
-        }, {
-            text: 'asdf',
-            weight: 4,
-        }, {
-            text: 'asdf',
-            weight: 4,
-        }, {
-            text: 'asdf',
-            weight: 4,
-        }, ];
+        var nbTopWords = 250;
 
         /**
          * [launchNameSearch description]
          * @return {[type]} [description]
          */
         $scope.launchNameSearch = function() {
+            alert($scope.nameSearch);
             /*
              * TODO: Implement the function.
              * It should get the correct search value, strip it, and call the
@@ -46,6 +31,11 @@ angular.module('frontendApp')
          * @return {[type]} [description]
          */
         $scope.launchKeywordSearch = function() {
+            var phrase = $scope.keywordSearch;
+            Keyword.getPapers(phrase, function(papers) {
+                $scope.words = Papers.getTopWords(nbTopWords, papers);
+            });
+
             /*
              * TODO: Implement the function.
              * It should get the correct search value, strip it, and call the

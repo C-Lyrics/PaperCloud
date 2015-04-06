@@ -21,10 +21,12 @@ angular.module('frontendApp')
                     if (scope.words.length) {
                         scope.bg = 'white';
                     }
-                    scope.words = scope.words.map(function(curr, idx) {
-                        curr.link = '';
-                        return curr;
-                    });
+                    // TODO: Doing the linking here is not a good idea.
+                    // Probably move to the service.
+                    // scope.words = scope.words.map(function(curr, idx) {
+                    //     curr.link = '';
+                    //     return curr;
+                    // });
 
                 });
                 scope.width = 250;
