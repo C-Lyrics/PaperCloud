@@ -17,7 +17,8 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'angular-jqcloud',
     ])
     .config(function($routeProvider) {
         $routeProvider

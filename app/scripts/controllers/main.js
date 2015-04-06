@@ -11,6 +11,28 @@ angular.module('frontendApp')
     .controller('MainCtrl', function($scope, Keyword, Researcher) {
         var nbTopWords = 250;
 
+        $scope.topWords = [{
+            text: 'Hey',
+            weight: 12,
+            link: 'http://',
+        }, {
+            text: 'Ha',
+            weight: 1,
+            link: 'http://',
+        }, {
+            text: 'Hu',
+            weight: 2,
+            link: 'http://',
+        }, {
+            text: 'Ho',
+            weight: 8,
+            link: 'http://',
+        }, {
+            text: 'Hi',
+            weight: 9,
+            link: 'http://',
+        }, ];
+
         /**
          * [launchNameSearch description]
          * @return {[type]} [description]
