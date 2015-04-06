@@ -13,7 +13,8 @@ angular.module('frontendApp')
 
         /**
          * [launchNameSearch description]
-         * @return {[type]} [description]
+         * @return {[type]} [Uses the function getpapers to get all research papers from the given search term
+                             and assigns the words scope to the topWords of the paper ]
          */
         $scope.launchNameSearch = function() {
             var name = $scope.nameSearch.trim();
@@ -24,7 +25,8 @@ angular.module('frontendApp')
 
         /**
          * [launchKeywordSearch description]
-         * @return {[type]} [description]
+          * @return {[type]} [Uses the function getpapers to get all research papers from the given search term
+                             and assigns the words scope to the topWords of the paper ]
          */
         $scope.launchKeywordSearch = function() {
             var phrase = $scope.keywordSearch.trim();
