@@ -16,15 +16,17 @@ angular.module('frontendApp')
 
             /**
              * [getPapers description]
-             * @param  {[type]}   phrase   [description]
-             * @param  {Function} callback [description]
-             * @return {[type]}            [description]
+             * @param  {[type]}   phrase   [used as a search term to collect all research papers]
+             * @param  {Function} callback [if grabbing research papers from API is successful,
+                                           it proceeds with the passed in function (reference in main.js)]
+             * @return {[type]}            [will return all papers from the search]
              */
             getPapers: function(phrase, callback) {
+                //calls back
                 $http(keywordApi + phrase)
-                    .get(function(res) {
-                        callback(res.data);
-                    }, Server.errorHandler);
+                    .get(function(response) {
+                        callback(response.data);
+                    }, Server.errorHandler);//send an error message if something was wrong in the process of grabbing all papers from API
             },
         };
     });

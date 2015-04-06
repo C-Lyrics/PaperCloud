@@ -59,6 +59,13 @@ body {
   margin-top: 28px;
 }
 
+.word-cloud-space {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -77,3 +84,4 @@ body {
     border-bottom: 0;
   }
 }
+

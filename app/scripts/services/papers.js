@@ -14,28 +14,28 @@ angular.module('frontendApp')
 
         /**
          * [extractWords description]
-         * @param  {[type]} songs [description]
-         * @return {[type]}       [description]
+         * @param  {[var]} allpapers [function should extract the stop words from going on the paper cloud]
+         * @return {[var]} researchpapers [function will return all of the research papers without stop words ]
          */
-        extractWords = function(songs) {
+        var extractWords = function(allpapers) {
             // TODO: This doesn't work.
-            var i, song, lyrics = [];
-            for (i = 0; i < songs.length; i++) {
-                song = songs[i].lyrics;
-                song = song.replace(
+            var i, allpapers, researchpapers = [];
+            for (i = 0; i < allpapers.length; i++) {
+                allpapers = allpapers[i].lyrics;
+                allpapers = allpapers.replace(
                     /\s(the|am|I|are|not|t|they|me|you|he|she|he|are|it|if|is|or|o|a|don|about|above|after|again|against|all|and|any|aren|as|act|herself|have|from|during|each|few|for|how|was|were|very|too|to|two|one|your|re|let|s|only|myself|other|ours|same|that|these|those|this|them|then|their|under|until|ve|why|us|an|in|on|do|up|my)\s/gi,
                     ' ');
-                lyrics = lyrics.concat(song.split(' '));
+                researchpapers = researchpapers.concat(allpapers.split(' '));
             }
-            return lyrics;
+            return researchpapers;
         };
 
         /**
          * [removeDuplicates description]
-         * @param  {[type]} words [description]
-         * @return {[type]}       [description]
+         * @param  {[var]} words [function should remove any duplicates it finds to prevent it from going on the paper cloud]
+         * @return {[var]} words [return the set of words that don't have the duplicates]
          */
-        removeDuplicates = function(words) {
+        var removeDuplicates = function(words) {
             words = words.filter(function(item, pos) {
                 return words.indexOf(item) == pos;
             });
@@ -44,24 +44,26 @@ angular.module('frontendApp')
 
         /**
          * [countFrequency description]
-         * @param  {[type]} word   [description]
-         * @param  {[type]} lyrics [description]
-         * @return {[type]}        [description]
+         * @param  {[var]} word   [function will take in the search word and find in the other param 
+                                    "researchpapers" to count them ]
+         * @param  {[var]} researchpapers [this parameter will use the search term "words" to search 
+                                    through all research papers and find the term and count them ]
+         * @return {[var]} number [should return a count on how many times a word occurs in all papers from a given search]
          */
-        countFrequency = function(word, lyrics) {
+        var countFrequency = function(word, researchpapers) {
             word = word.toLowerCase();
-            lyrics = lyrics.toLowerCase();
-            return (lyrics.split(word)
+            researchpapers = researchpapers.toLowerCase();
+            return (researchpapers.split(word)
                 .length - 1);
         };
 
         /**
          * [selectMostFrequents description]
-         * @param  {[type]} words [description]
-         * @param  {[type]} N     [description]
-         * @return {[type]}       [description]
+         * @param  {[var]} words [uses function "sortWordByWeight" and sorts the "words" in order of frequency ]
+         * @param  {[var]} N     [N is the amount of words that will be returned back for the word cloud]
+         * @return {[var]} words [return the top N words from the words array]
          */
-        selectMostFrequents = function(words, N) {
+        var selectMostFrequents = function(words, N) {
             // TODO: Return the top N words, from the words array, which contains
             // counts and word: [{text: '', weight: int}, ...]
             // sort according to the weight
@@ -71,6 +73,7 @@ angular.module('frontendApp')
             });
 
             words = sortWordByWeight.slice(-N);
+            //selects the last N amount of words from the list (pulling from the end of the list)
             return words;
         };
 
@@ -82,23 +85,24 @@ angular.module('frontendApp')
 
             /**
              * Returns the most frequent words given a list of papers
-             * @param  int nbTopWords    The number of desired words
-             * @param  ['', ] papers     A text list of papers
+             * @param  int nbTopWords    [The number of desired words]
+             * @param  ['', ] papers     [A text list of papers]
              * @return array[{
              *         text: '',
              *         weight: 0,
              *         link: '',
              * }, ]                      An array of words objects, ready for the WC.
              */
-            getTopWords: function(nbTopWords, papers) {
+            getTopWords: function(nbTopWords, allpapers) {
                 var words;
-                papers = papers.join(' ');
-                words = papers.split(' ');
-                words = removeDuplicates(words);
-                words = words.map(function(curr, idx) {
+                allpapers = allpapers.join(' '); //joins all elements of an array into one string
+                words = allpapers.split(' '); // splits a string into an array of substrings 
+                words = removeDuplicates(words); //remove the duplicates in the array
+                words = words.map(function(curr, idx) { 
+                //words will now be an obj that has text, weight, and link
                     return {
                         text: curr,
-                        weight: countFrequency(curr, papers),
+                        weight: countFrequency(curr, allpapers),
                         link: ''
                     };
                 });
