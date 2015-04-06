@@ -24,7 +24,7 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
+          <li class="active"><a ng-href="#/home">Home</a></li>
           <li><a ng-href="#/history">History</a></li>
         </ul>
         <h3 class="text-muted">PaperCloud</h3>
@@ -62,12 +62,13 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/history.js"></script>
         <script src="scripts/controllers/listing.js"></script>
         <script src="scripts/services/keyword.js"></script>
         <script src="scripts/services/researcher.js"></script>
         <script src="scripts/services/server.js"></script>
+        <script src="scripts/directives/cpapercloud.js"></script>
+        <script src="scripts/services/papers.js"></script>
         <!-- endbuild -->
 </body>
 </html>

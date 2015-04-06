@@ -9,19 +9,17 @@
  */
 angular.module('frontendApp')
     .controller('MainCtrl', function($scope, Keyword, Researcher) {
+        var nbTopWords = 250;
 
         /**
          * [launchNameSearch description]
          * @return {[type]} [description]
          */
         $scope.launchNameSearch = function() {
-            /*
-             * TODO: Implement the function.
-             * It should get the correct search value, strip it, and call the
-             * good Factory's function. This means defining the call back when
-             * the service returns something. The callback essentially means
-             * generating the word cloud from the response of the service.
-             */
+            var name = $scope.nameSearch.trim();
+            Researcher.getPapers(name, function(papers) {
+                $scope.words = Papers.getTopWords(nbTopWords, papers);
+            });
         };
 
         /**
@@ -29,6 +27,11 @@ angular.module('frontendApp')
          * @return {[type]} [description]
          */
         $scope.launchKeywordSearch = function() {
+            var phrase = $scope.keywordSearch.trim();
+            Keyword.getPapers(phrase, function(papers) {
+                $scope.words = Papers.getTopWords(nbTopWords, papers);
+            });
+
             /*
              * TODO: Implement the function.
              * It should get the correct search value, strip it, and call the

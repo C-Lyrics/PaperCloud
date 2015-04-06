@@ -1,11 +1,10 @@
-<div height="500" width="500" id="main.html" class="word-cloud-space"</div>
-</div>
+<div c-paper-cloud words="words" class="col-sm-12"></div>
 
 <form class="input-form text-center col-md-12">
-  <input class= "form-control col-md-5" id="keyword-search"> </input>
+  <input class= "form-control col-md-5" id="keyword-search" ng-model="keywordSearch"> </input>
   <button class= "btn btn-primary" ng-click="launchKeywordSearch()"  id="keyword-button"> Keyword Search </button>
 
   <br/><br/>
-  <input class= "form-control col-md-5" id="name-search"> </input>
+  <input class= "form-control col-md-5" id="name-search" ng-model="nameSearch"> </input>
   <button class= "btn btn-primary" ng-click="launchNameSearch()" id="name-button"> Name Search </button>
 </form>

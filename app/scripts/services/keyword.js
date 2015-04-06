@@ -8,11 +8,23 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-    .factory('Keyword', function() {
+    .factory('Keyword', function($http, Server) {
 
-        var meaningOfLife = 42;
+        var keywordApi = Server.ServerUrl + 'keyword/';
 
         return {
-            getPapers: function(phrase, callback) {},
+
+            /**
+             * [getPapers description]
+             * @param  {[type]}   phrase   [description]
+             * @param  {Function} callback [description]
+             * @return {[type]}            [description]
+             */
+            getPapers: function(phrase, callback) {
+                $http(keywordApi + phrase)
+                    .get(function(res) {
+                        callback(res.data);
+                    }, Server.errorHandler);
+            },
         };
     });
