@@ -8,16 +8,12 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-  .factory('Papers', function () {
-    // Service logic
-    // ...
+    .factory('Papers', function() {
 
-    var meaningOfLife = 42;
+        // Public API here
+        return {
+            getTopWords: function(nbTopWords, papers) {
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+            },
+        };
+    });

@@ -18,7 +18,9 @@ angular.module('frontendApp')
             link: function postLink(scope, element, attrs) {
                 scope.bg = 'white';
                 scope.$watch('words', function(oldVal, newVal) {
-                    if (scope.words.length) {
+                    if (scope.words && scope.words.length) {
+                        // TODO: Remove this line.
+                        // You have it already outside of the watch.
                         scope.bg = 'white';
                     }
                     // TODO: Doing the linking here is not a good idea.
