@@ -10,6 +10,23 @@
 angular.module('frontendApp')
     .controller('MainCtrl', function($scope, Keyword, Researcher) {
 
+        $scope.words = [{
+            text: 'asdf',
+            weight: 4,
+        }, {
+            text: 'asdf',
+            weight: 4,
+        }, {
+            text: 'asdf',
+            weight: 4,
+        }, {
+            text: 'asdf',
+            weight: 4,
+        }, {
+            text: 'asdf',
+            weight: 4,
+        }, ];
+
         /**
          * [launchNameSearch description]
          * @return {[type]} [description]

@@ -7,12 +7,28 @@
  * # cPaperCloud
  */
 angular.module('frontendApp')
-  .directive('cPaperCloud', function () {
-    return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the cPaperCloud directive');
-      }
-    };
-  });
+    .directive('cPaperCloud', function() {
+        return {
+            templateUrl: 'views/directives/cPaperCloud.html',
+            restrict: 'EACM',
+            replace: true,
+            scope: {
+                words: '=words',
+            },
+            link: function postLink(scope, element, attrs) {
+                scope.bg = 'white';
+                scope.$watch('words', function(oldVal, newVal) {
+                    if (scope.words.length) {
+                        scope.bg = 'white';
+                    }
+                    scope.words = scope.words.map(function(curr, idx) {
+                        curr.link = '';
+                        return curr;
+                    });
+
+                });
+                scope.width = 250;
+                scope.color = ['#FF0000', '#00FF00', '#0000FF', '#FF00FF'];
+            }
+        };
+    });
