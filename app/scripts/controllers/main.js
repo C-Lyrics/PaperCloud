@@ -9,29 +9,17 @@
  */
 angular.module('frontendApp')
     .controller('MainCtrl', function($scope, Keyword, Researcher) {
-        var nbTopWords = 250;
+        var nbTopWords = 250,
+            isEmpty;
 
-        $scope.topWords = [{
-            text: 'Hey',
-            weight: 12,
-            link: 'http://',
-        }, {
-            text: 'Ha',
-            weight: 1,
-            link: 'http://',
-        }, {
-            text: 'Hu',
-            weight: 2,
-            link: 'http://',
-        }, {
-            text: 'Ho',
-            weight: 8,
-            link: 'http://',
-        }, {
-            text: 'Hi',
-            weight: 9,
-            link: 'http://',
-        }, ];
+        $scope.words = [];
+
+        isEmpty = function(phrase) {
+            var empty = !phrase;
+            if (empty) {
+                alert('Please enter a non empty search');
+            }
+        };
 
         /**
          * Uses the function getpapers to get all research papers from the
@@ -41,6 +29,9 @@ angular.module('frontendApp')
          */
         $scope.launchNameSearch = function() {
             var name = $scope.nameSearch.trim();
+            if (isEmpty(name)) {
+                return;
+            }
             Researcher.getPapers(name, function(papers) {
                 $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
             });
@@ -54,6 +45,9 @@ angular.module('frontendApp')
          */
         $scope.launchKeywordSearch = function() {
             var phrase = $scope.keywordSearch.trim();
+            if (isEmpty(phrase)) {
+                return;
+            }
             Keyword.getPapers(phrase, function(papers) {
                 $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
             });
