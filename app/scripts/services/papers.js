@@ -25,7 +25,8 @@ angular.module('frontendApp')
                 allpapers = allpapers.replace(
                     /\s(the|am|I|are|not|t|they|me|you|he|she|he|are|it|if|is|or|o|a|don|about|above|after|again|against|all|and|any|aren|as|act|herself|have|from|during|each|few|for|how|was|were|very|too|to|two|one|your|re|let|s|only|myself|other|ours|same|that|these|those|this|them|then|their|under|until|ve|why|us|an|in|on|do|up|my)\s/gi,
                     ' ');
-                researchpapers = researchpapers.concat(allpapers.split(' '));
+                researchpapers = researchpapers.concat(allpapers.split(
+                    ' '));
             }
             return researchpapers;
         };
@@ -44,9 +45,9 @@ angular.module('frontendApp')
 
         /**
          * [countFrequency description]
-         * @param  {[var]} word   [function will take in the search word and find in the other param 
+         * @param  {[var]} word   [function will take in the search word and find in the other param
                                     "researchpapers" to count them ]
-         * @param  {[var]} researchpapers [this parameter will use the search term "words" to search 
+         * @param  {[var]} researchpapers [this parameter will use the search term "words" to search
                                     through all research papers and find the term and count them ]
          * @return {[var]} number [should return a count on how many times a word occurs in all papers from a given search]
          */
@@ -58,10 +59,10 @@ angular.module('frontendApp')
         };
 
         /**
-         * [selectMostFrequents description]
-         * @param  {[var]} words [uses function "sortWordByWeight" and sorts the "words" in order of frequency ]
-         * @param  {[var]} N     [N is the amount of words that will be returned back for the word cloud]
-         * @return {[var]} words [return the top N words from the words array]
+         * sorts the "words" in order of frequency.
+         * @param  [{text:'', weight: 0}] words     A list of words
+         * @param  int N     number of words to be returned for word cloud
+         * @return [{text: '', weight: 0}] words return the top N words from the words array
          */
         var selectMostFrequents = function(words, N) {
             // TODO: Return the top N words, from the words array, which contains
@@ -85,8 +86,8 @@ angular.module('frontendApp')
 
             /**
              * Returns the most frequent words given a list of papers
-             * @param  int nbTopWords    [The number of desired words]
-             * @param  ['', ] papers     [A text list of papers]
+             * @param  int nbTopWords    The number of desired words
+             * @param  ['', ] papers     A text list of papers
              * @return array[{
              *         text: '',
              *         weight: 0,
@@ -96,17 +97,52 @@ angular.module('frontendApp')
             getTopWords: function(nbTopWords, allpapers) {
                 var words;
                 allpapers = allpapers.join(' '); //joins all elements of an array into one string
-                words = allpapers.split(' '); // splits a string into an array of substrings 
+                words = allpapers.split(' '); // splits a string into an array of substrings
                 words = removeDuplicates(words); //remove the duplicates in the array
-                words = words.map(function(curr, idx) { 
-                //words will now be an obj that has text, weight, and link
+                words = words.map(function(curr, idx) {
+                    //words will now be an obj that has text, weight, and link
                     return {
                         text: curr,
                         weight: countFrequency(curr, allpapers),
                         link: ''
                     };
                 });
-                return selectMostFrequents(words, nbTopWords);
+                // return selectMostFrequents(words, nbTopWords);
+
+                /****** For testing purposes *****************/
+                return [{
+                    text: 'asdf',
+                    weight: 1,
+                    link: '',
+                }, {
+                    text: 'asdfasdf',
+                    weight: 2,
+                    link: '',
+                }, {
+                    text: 'asdflkj',
+                    weight: 3,
+                    link: '',
+                }, {
+                    text: 'asdfoi',
+                    weight: 4,
+                    link: '',
+                }, {
+                    text: 'lkjasdf',
+                    weight: 5,
+                    link: '',
+                }, {
+                    text: 'asc',
+                    weight: 6,
+                    link: '',
+                }, {
+                    text: 'asc',
+                    weight: 7,
+                    link: '',
+                }, {
+                    text: 'oiuhokjl',
+                    weight: 8,
+                    link: '',
+                }, ];
 
             },
         };
