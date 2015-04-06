@@ -21,6 +21,7 @@ angular.module('frontendApp')
              * @return {[type]}            [description]
              */
             getPapers: function(phrase, callback) {
+                //calls back
                 $http(keywordApi + phrase)
                     .get(function(res) {
                         callback(res.data);

@@ -18,7 +18,7 @@ angular.module('frontendApp')
         $scope.launchNameSearch = function() {
             var name = $scope.nameSearch.trim();
             Researcher.getPapers(name, function(papers) {
-                $scope.words = Papers.getTopWords(nbTopWords, papers);
+                $scope.words = Papers.getTopWords(nbTopWords, papers);//function in services/papers.js
             });
         };
 
@@ -29,7 +29,7 @@ angular.module('frontendApp')
         $scope.launchKeywordSearch = function() {
             var phrase = $scope.keywordSearch.trim();
             Keyword.getPapers(phrase, function(papers) {
-                $scope.words = Papers.getTopWords(nbTopWords, papers);
+                $scope.words = Papers.getTopWords(nbTopWords, papers);//function in services/papers.js
             });
 
             /*

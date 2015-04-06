@@ -14,20 +14,21 @@ angular.module('frontendApp')
 
         /**
          * [extractWords description]
-         * @param  {[type]} songs [description]
+         * @param  {[type]} researchpapers [description]
          * @return {[type]}       [description]
          */
-        extractWords = function(songs) {
+        var extractWords = function(allpapers) {
             // TODO: This doesn't work.
-            var i, song, lyrics = [];
-            for (i = 0; i < songs.length; i++) {
-                song = songs[i].lyrics;
-                song = song.replace(
+            //function should extract the stop words from going on the paper cloud
+            var i, allpapers, researchpapers = [];
+            for (i = 0; i < allpapers.length; i++) {
+                allpapers = allpapers[i].lyrics;
+                allpapers = allpapers.replace(
                     /\s(the|am|I|are|not|t|they|me|you|he|she|he|are|it|if|is|or|o|a|don|about|above|after|again|against|all|and|any|aren|as|act|herself|have|from|during|each|few|for|how|was|were|very|too|to|two|one|your|re|let|s|only|myself|other|ours|same|that|these|those|this|them|then|their|under|until|ve|why|us|an|in|on|do|up|my)\s/gi,
                     ' ');
-                lyrics = lyrics.concat(song.split(' '));
+                researchpapers = researchpapers.concat(allpapers.split(' '));
             }
-            return lyrics;
+            return researchpapers;
         };
 
         /**
@@ -35,7 +36,9 @@ angular.module('frontendApp')
          * @param  {[type]} words [description]
          * @return {[type]}       [description]
          */
-        removeDuplicates = function(words) {
+        var removeDuplicates = function(words) {
+            //function should remove any duplicates it finds to prevent it from going on the paper cloud
+            //return the set of words that don't have the duplicates
             words = words.filter(function(item, pos) {
                 return words.indexOf(item) == pos;
             });
@@ -48,10 +51,11 @@ angular.module('frontendApp')
          * @param  {[type]} lyrics [description]
          * @return {[type]}        [description]
          */
-        countFrequency = function(word, lyrics) {
+        var countFrequency = function(word, researchpapers) {
+            //should return a count on how many times a word occurs in all papers from a given search
             word = word.toLowerCase();
-            lyrics = lyrics.toLowerCase();
-            return (lyrics.split(word)
+            researchpapers = researchpapers.toLowerCase();
+            return (researchpapers.split(word)
                 .length - 1);
         };
 
@@ -61,7 +65,7 @@ angular.module('frontendApp')
          * @param  {[type]} N     [description]
          * @return {[type]}       [description]
          */
-        selectMostFrequents = function(words, N) {
+        var selectMostFrequents = function(words, N) {
             // TODO: Return the top N words, from the words array, which contains
             // counts and word: [{text: '', weight: int}, ...]
             // sort according to the weight
@@ -71,6 +75,7 @@ angular.module('frontendApp')
             });
 
             words = sortWordByWeight.slice(-N);
+            //selects the last N amount of words from the list (pulling from the end of the list)
             return words;
         };
 
@@ -90,15 +95,16 @@ angular.module('frontendApp')
              *         link: '',
              * }, ]                      An array of words objects, ready for the WC.
              */
-            getTopWords: function(nbTopWords, papers) {
+            getTopWords: function(nbTopWords, allpapers) {
                 var words;
-                papers = papers.join(' ');
-                words = papers.split(' ');
-                words = removeDuplicates(words);
-                words = words.map(function(curr, idx) {
+                allpapers = allpapers.join(' '); //joins all elements of an array into one string
+                words = allpapers.split(' '); // splits a string into an array of substrings 
+                words = removeDuplicates(words); //remove the duplicates in the array
+                words = words.map(function(curr, idx) { 
+                //words will now be an obj that has text, weight, and link
                     return {
                         text: curr,
-                        weight: countFrequency(curr, papers),
+                        weight: countFrequency(curr, allpapers),
                         link: ''
                     };
                 });
