@@ -23,10 +23,10 @@ angular.module('frontendApp')
              */
             getPapers: function(phrase, callback) {
                 //calls back
-                $http(keywordApi + phrase)
-                    .get(function(response) {
+                $http.get(keywordApi + phrase)
+                    .then(function(response) {
                         callback(response.data);
-                    }, Server.errorHandler);//send an error message if something was wrong in the process of grabbing all papers from API
+                    }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },
         };
     });

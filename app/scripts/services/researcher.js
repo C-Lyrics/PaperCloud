@@ -22,8 +22,8 @@ angular.module('frontendApp')
              * @return {[type]}            [will return autocompletes for the serach bars]
              */
             getAutocomplete: function(name, callback) {
-                $http(nameApi + name)
-                    .get(function(res) {
+                $http.get(nameApi + name)
+                    .then(function(res) {
                         callback(res.data);
                     }, Server.errorHandler);
             },
@@ -36,10 +36,10 @@ angular.module('frontendApp')
              * @return {[type]}            [will return all papers from the search]
              */
             getPapers: function(name, callback) {
-                $http(acApi + name)
-                    .get(function(res) {
+                $http.get(acApi + name)
+                    .then(function(res) {
                         callback(res.data);
-                    }, Server.errorHandler);//send an error message if something was wrong in the process of grabbing all papers from API
+                    }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },
         };
     });

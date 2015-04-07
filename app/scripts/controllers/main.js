@@ -19,6 +19,7 @@ angular.module('frontendApp')
             if (empty) {
                 alert('Please enter a non empty search');
             }
+            return empty;
         };
 
         /**
