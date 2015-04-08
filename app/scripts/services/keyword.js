@@ -8,7 +8,7 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-    .factory('Keyword', function($http, Server) {
+    .factory('Keyword', function($http, Server, Papers) {
 
         var keywordApi = Server.ServerUrl + 'keyword/';
 
@@ -22,7 +22,9 @@ angular.module('frontendApp')
              * @return {[type]}            [will return all papers from the search]
              */
             getPapers: function(phrase, callback) {
-                //calls back
+                if (!Server.prod) {
+                    return callback(Papers.papersMockup);
+                }
                 $http.get(keywordApi + phrase)
                     .then(function(response) {
                         callback(response.data);

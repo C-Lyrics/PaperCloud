@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('MainCtrl', function($scope, Keyword, Researcher) {
+    .controller('MainCtrl', function($scope, Keyword, Researcher, Papers) {
         var nbTopWords = 250,
             isEmpty;
 

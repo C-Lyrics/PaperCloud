@@ -84,6 +84,13 @@ angular.module('frontendApp')
             countFrequency: countFrequency,
             selectMostFrequents: selectMostFrequents,
 
+            // TODO: Create more fake papers
+            papersMockup: [{
+                title: 'title',
+                author: 'Author A.',
+                content: 'my great content is not so great.',
+            }, ],
+
             /**
              * Returns the most frequent words given a list of papers
              * @param  int nbTopWords    The number of desired words
@@ -110,6 +117,7 @@ angular.module('frontendApp')
                 // return selectMostFrequents(words, nbTopWords);
 
                 /****** For testing purposes *****************/
+                // TODO: Replace and work with Server.prod and Papers.papersMockup
                 return [{
                     text: 'asdf',
                     weight: 1,

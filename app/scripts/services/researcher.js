@@ -8,10 +8,12 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-    .factory('Researcher', function($http, Server) {
+    .factory('Researcher', function($http, Server, Papers) {
 
         var nameApi = Server.ServerUrl + 'name/';
         var acApi = Server.ServerUrl + 'name_ac/';
+        // TODO: Add more names
+        var mockupNames = ['Fake', ];
 
         // Public API here
         return {
@@ -22,6 +24,9 @@ angular.module('frontendApp')
              * @return {[type]}            [will return autocompletes for the serach bars]
              */
             getAutocomplete: function(name, callback) {
+                if (!Server.prod) {
+                    return callback(mockupNames);
+                }
                 $http.get(nameApi + name)
                     .then(function(res) {
                         callback(res.data);
@@ -36,6 +41,9 @@ angular.module('frontendApp')
              * @return {[type]}            [will return all papers from the search]
              */
             getPapers: function(name, callback) {
+                if (!Server.prod) {
+                    return callback(Papers.papersMockup);
+                }
                 $http.get(acApi + name)
                     .then(function(res) {
                         callback(res.data);
