@@ -7,7 +7,7 @@
  * # cPaperCloud
  */
 angular.module('frontendApp')
-    .directive('cPaperCloud', function() {
+    .directive('cPaperCloud', function($compile) {
         return {
             templateUrl: 'views/directives/cPaperCloud.html',
             restrict: 'EACM',
@@ -19,9 +19,8 @@ angular.module('frontendApp')
                 scope.bg = 'white';
                 scope.$watch('words', function(oldVal, newVal) {
                     if (scope.words && scope.words.length) {
-                        // TODO: Remove this line.
-                        // You have it already outside of the watch.
-                        scope.bg = 'white';
+                        debugger;
+                        $compile(element.contents())(scope);
                     }
                     // TODO: Doing the linking here is not a good idea.
                     // Probably move to the service.
