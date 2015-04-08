@@ -12,7 +12,8 @@ angular.module('frontendApp')
 
         this.Url = 'http://localhost:9000/';
 
-        this.ServerUrl = 'http://localhost:9000/';
+        this.ServerUrl =
+            'http://localhost/USC/310/PaperCloudBackend/index.php/';
 
         this.errorHandler = function(data, a, b, c) {
             alert('Error while loading data: Check the console for logs');
