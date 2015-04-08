@@ -19,8 +19,7 @@ angular.module('frontendApp')
                 scope.bg = 'white';
                 scope.$watch('words', function(oldVal, newVal) {
                     if (scope.words && scope.words.length) {
-                        debugger;
-                        $compile(element.contents())(scope);
+                        // Update the word cloud
                     }
                     // TODO: Doing the linking here is not a good idea.
                     // Probably move to the service.
