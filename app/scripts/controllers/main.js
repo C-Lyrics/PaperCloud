@@ -22,11 +22,10 @@ angular.module('frontendApp')
             return empty;
         };
 
-        /**
-         * Uses the function getpapers to get all research papers from the
-         * given search term and assigns the words scope to the topWords of
-         * the paper
-         * @return None
+         /**
+         * [launchNameSearch description]
+         * @param  {[]} [uses the function 'getpapers' to get all research appers from the given 
+                         search term and assign the words scope to the topWords of the paper]
          */
         $scope.launchNameSearch = function() {
             var name = $scope.nameSearch.trim();
@@ -38,11 +37,10 @@ angular.module('frontendApp')
             });
         };
 
-        /**
-         * Uses the function getpapers to get all research papers from the
-         * given search term and assigns the words scope to the topWords of
-         * the paper
-         * @return None
+         /**
+         * [launchKeywordSearch description]
+         * @param  {[]} [uses the function 'getpapers' to get all research appers from the given 
+                         search term and assign the words scope to the topWords of the paper]
          */
         $scope.launchKeywordSearch = function() {
             var phrase = $scope.keywordSearch.trim();

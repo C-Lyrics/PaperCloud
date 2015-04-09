@@ -17,9 +17,9 @@ angular.module('frontendApp')
          * @param  {[var]} allpapers [function should extract the stop words from going on the paper cloud]
          * @return {[var]} researchpapers [function will return all of the research papers without stop words ]
          */
-        var extractWords = function(allpapers) {
+        extractWords = function(allpapers) {
             // TODO: This doesn't work.
-            var i, allpapers, researchpapers = [];
+            var i, researchpapers = [];
             for (i = 0; i < allpapers.length; i++) {
                 allpapers = allpapers[i].lyrics;
                 allpapers = allpapers.replace(
@@ -36,9 +36,9 @@ angular.module('frontendApp')
          * @param  {[var]} words [function should remove any duplicates it finds to prevent it from going on the paper cloud]
          * @return {[var]} words [return the set of words that don't have the duplicates]
          */
-        var removeDuplicates = function(words) {
+        removeDuplicates = function(words) {
             words = words.filter(function(item, pos) {
-                return words.indexOf(item) == pos;
+                return words.indexOf(item) === pos;
             });
             return words;
         };
@@ -51,7 +51,7 @@ angular.module('frontendApp')
                                     through all research papers and find the term and count them ]
          * @return {[var]} number [should return a count on how many times a word occurs in all papers from a given search]
          */
-        var countFrequency = function(word, researchpapers) {
+        countFrequency = function(word, researchpapers) {
             word = word.toLowerCase();
             researchpapers = researchpapers.toLowerCase();
             return (researchpapers.split(word)
@@ -64,8 +64,8 @@ angular.module('frontendApp')
          * @param  int N     number of words to be returned for word cloud
          * @return [{text: '', weight: 0}] words return the top N words from the words array
          */
-        var selectMostFrequents = function(words, N) {
-            // TODO: Return the top N words, from the words array, which contains
+        selectMostFrequents = function(words, N) {
+            // Return the top N words, from the words array, which contains
             // counts and word: [{text: '', weight: int}, ...]
             // sort according to the weight
             var sortWordByWeight = words.slice(0);

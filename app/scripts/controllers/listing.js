@@ -10,8 +10,6 @@
 angular.module('frontendApp')
   .controller('ListingCtrl', function ($scope) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+      'Listing'
     ];
   });
