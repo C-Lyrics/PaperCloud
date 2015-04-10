@@ -46,8 +46,8 @@ angular.module('frontendApp')
 
         /**
          * Removes duplicates from an array of words
-         * @param  {[var]} words [function should remove any duplicates it finds to prevent it from going on the paper cloud]
-         * @return {[var]} words [return the set of words that don't have the duplicates]
+         * @param  [] words     Containes all words of all papers, with duplicates
+         * @return [] words     Contains all words, without duplicates
          */
         removeDuplicates = function(words) {
             words = words.filter(function(item, pos) {
@@ -57,17 +57,15 @@ angular.module('frontendApp')
         };
 
         /**
-         * [countFrequency description]
-         * @param  {[var]} word   [function will take in the search word and find in the other param
-                                    "researchpapers" to count them ]
-         * @param  {[var]} researchpapers [this parameter will use the search term "words" to search
-                                    through all research papers and find the term and count them ]
-         * @return {[var]} number [should return a count on how many times a word occurs in all papers from a given search]
+         * Counts the frequency of of a word in a string
+         * @param  string word      The word to count occurences of
+         * @param  string papers    The string in which the words appears
+         * @return int              The number of occurences
          */
-        countFrequency = function(word, researchpapers) {
+        countFrequency = function(word, papers) {
             word = word.toLowerCase();
-            researchpapers = researchpapers.toLowerCase();
-            return (researchpapers.split(word)
+            papers = papers.toLowerCase();
+            return (papers.split(word)
                 .length - 1);
         };
 
