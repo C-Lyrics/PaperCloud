@@ -25,7 +25,7 @@ angular.module('frontendApp')
                 if (!Server.prod) {
                     return callback(Papers.papersMockup);
                 }
-                $http.get(keywordApi + phrase)
+                $http.get(keywordApi + phrase, { cache: true})
                     .then(function(response) {
                         callback(response.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
