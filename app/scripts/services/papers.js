@@ -13,9 +13,9 @@ angular.module('frontendApp')
             selectMostFrequents;
 
         /**
-         * [extractWords description]
-         * @param  {[var]} allpapers [function should extract the stop words from going on the paper cloud]
-         * @return {[var]} researchpapers [function will return all of the research papers without stop words ]
+         * Strips punctuation and stop words and returns the remaining words.
+         * @param  string allPapers     a string containing all papers
+         * @return ['', ]    An array containing every non-stop word
          */
         extractWords = function(allPapers) {
             var words = ['the', 'am', 'I', 'are', 'not', 't', 'they', 'me',
@@ -30,6 +30,7 @@ angular.module('frontendApp')
                     'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my'
                 ],
                 i, reg;
+            allPapers = allPapers.toLowerCase();
             // Removes punctuation and weird symbols
             allPapers = allPapers.replace(
                 /[\.,-\/#!$%\^&\*;:{}=\-_`~()"']/g, '');
@@ -44,7 +45,7 @@ angular.module('frontendApp')
         };
 
         /**
-         * [removeDuplicates description]
+         * Removes duplicates from an array of words
          * @param  {[var]} words [function should remove any duplicates it finds to prevent it from going on the paper cloud]
          * @return {[var]} words [return the set of words that don't have the duplicates]
          */
