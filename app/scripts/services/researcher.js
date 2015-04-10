@@ -46,6 +46,7 @@ angular.module('frontendApp')
                 }
                 $http.get(acApi + name, { cache: true})
                     .then(function(res) {
+                    	Papers.cached = res.data;
                         callback(res.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },

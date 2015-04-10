@@ -94,6 +94,8 @@ angular.module('frontendApp')
             extractWords: extractWords,
             countFrequency: countFrequency,
             selectMostFrequents: selectMostFrequents,
+            
+            cached: [],
 
             // TODO: Create more fake papers
             papersMockup: [{
