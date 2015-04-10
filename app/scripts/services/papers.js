@@ -81,7 +81,7 @@ angular.module('frontendApp')
             // sort according to the weight
             var sortWordByWeight = words.slice(0);
             sortWordByWeight.sort(function(a, b) {
-                return a.weight - b.weight;
+                return b.weight - a.weight;
             });
 
             words = sortWordByWeight.slice(-N);
