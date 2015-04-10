@@ -139,7 +139,7 @@ angular.module('frontendApp')
             getTopWords: function(nbTopWords, allPapers) {
                 var words;
                 allPapers = allPapers.reduce(function(prev, curr) {
-                    return prev + curr.content;
+                    return prev + ' ' + curr.content;
                 }, '');
                 words = extractWords(allPapers);
                 words = removeDuplicates(words); //remove the duplicates in the array
