@@ -125,57 +125,22 @@ angular.module('frontendApp')
              *         link: '',
              * }, ]                      An array of words objects, ready for the WC.
              */
-            getTopWords: function(nbTopWords, allpapers) {
+            getTopWords: function(nbTopWords, allPapers) {
                 var words;
-                allpapers = allpapers.join(' '); //joins all elements of an array into one string
-                words = allpapers.split(' '); // splits a string into an array of substrings
+                allPapers = allPapers.reduce(function(prev, curr) {
+                    return prev + curr.content;
+                }, '');
+                words = allPapers.split(' '); // splits a string into an array of substrings
                 words = removeDuplicates(words); //remove the duplicates in the array
                 words = words.map(function(curr, idx) {
                     //words will now be an obj that has text, weight, and link
                     return {
                         text: curr,
-                        weight: countFrequency(curr, allpapers),
+                        weight: countFrequency(curr, allPapers),
                         link: ''
                     };
                 });
                 return selectMostFrequents(words, nbTopWords);
-
-                /****** For testing purposes *****************/
-                // TODO: Replace and work with Server.prod and Papers.papersMockup
-                //return [{
-                //text: 'asdf',
-                //weight: 1,
-                //link: '',
-                //}, {
-                //text: 'asdfasdf',
-                //weight: 2,
-                //link: '',
-                //}, {
-                //text: 'asdflkj',
-                //weight: 3,
-                //link: '',
-                //}, {
-                //text: 'asdfoi',
-                //weight: 4,
-                //link: '',
-                //}, {
-                //text: 'lkjasdf',
-                //weight: 5,
-                //link: '',
-                //}, {
-                //text: 'asc',
-                //weight: 6,
-                //link: '',
-                //}, {
-                //text: 'asc',
-                //weight: 7,
-                //link: '',
-                //}, {
-                //text: 'oiuhokjl',
-                //weight: 8,
-                //link: '',
-                //}, ];
-
             },
         };
     });
