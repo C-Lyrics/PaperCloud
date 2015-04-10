@@ -17,18 +17,30 @@ angular.module('frontendApp')
          * @param  {[var]} allpapers [function should extract the stop words from going on the paper cloud]
          * @return {[var]} researchpapers [function will return all of the research papers without stop words ]
          */
-        extractWords = function(allpapers) {
-            // TODO: This doesn't work.
-            var i, researchpapers = [];
-            for (i = 0; i < allpapers.length; i++) {
-                allpapers = allpapers[i].lyrics;
-                allpapers = allpapers.replace(
-                    /\s(the|am|I|are|not|t|they|me|you|he|she|he|are|it|if|is|or|o|a|don|about|above|after|again|against|all|and|any|aren|as|act|herself|have|from|during|each|few|for|how|was|were|very|too|to|two|one|your|re|let|s|only|myself|other|ours|same|that|these|those|this|them|then|their|under|until|ve|why|us|an|in|on|do|up|my)\s/gi,
-                    ' ');
-                researchpapers = researchpapers.concat(allpapers.split(
-                    ' '));
+        extractWords = function(allPapers) {
+            var words = ['the', 'am', 'I', 'are', 'not', 't', 'they', 'me',
+                    'you', 'he', 'she', 'he', 'are', 'it', 'if', 'is', 'or',
+                    'o', 'a', 'don', 'about', 'above', 'after', 'again',
+                    'against', 'all', 'and', 'any', 'aren', 'as', 'act',
+                    'herself', 'have', 'from', 'during', 'each', 'few',
+                    'for', 'how', 'was', 'were', 'very', 'too', 'to', 'two',
+                    'one', 'your', 're', 'let', 's', 'only', 'myself',
+                    'other', 'ours', 'same', 'that', 'these', 'those',
+                    'this', 'them', 'then', 'their', 'under', 'until', 've',
+                    'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my'
+                ],
+                i, reg;
+            // Removes punctuation and weird symbols
+            allPapers = allPapers.replace(
+                /[\.,-\/#!$%\^&\*;:{}=\-_`~()"']/g, '');
+            // Remove numbers
+            allPapers = allPapers.replace(/\d*/g, '');
+            // Removing stop words
+            for (i = 0; i < words.length; i++) {
+                reg = new RegExp('/' + words[i] + '/gi');
+                allPapers = allPapers.replace(reg, '');
             }
-            return researchpapers;
+            return allPapers.split(' ');
         };
 
         /**
@@ -130,7 +142,7 @@ angular.module('frontendApp')
                 allPapers = allPapers.reduce(function(prev, curr) {
                     return prev + curr.content;
                 }, '');
-                words = allPapers.split(' '); // splits a string into an array of substrings
+                words = extractWords(allPapers);
                 words = removeDuplicates(words); //remove the duplicates in the array
                 words = words.map(function(curr, idx) {
                     //words will now be an obj that has text, weight, and link
