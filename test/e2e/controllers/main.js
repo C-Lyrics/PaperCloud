@@ -42,4 +42,17 @@ describe('Application Homepage', function() {
         expect(btn.getAttribute('ng-click'))
             .toBe('launchKeywordSearch');
     });
+
+    it('should have a click event on the word cloud', function() {
+        var btn = browser.driver.findElement(by.id('keyword-button')),
+            search = browser.driver.findElement(by.id('keyword-search'));
+        search.sendKeys('example');
+        btn.click();
+        browser.driver.sleep(2000);
+        var link = browser.driver.findElement(by.id('cWordCloud_word_0'));
+        expect(!!link)
+            .toBeTruthy();
+        expect(!!link.onclick)
+            .toBeTruthy();
+    });
 });

@@ -11,7 +11,7 @@ angular.module('frontendApp')
     .factory('Keyword', function($http, Server, Papers) {
 
         var keywordApi = Server.ServerUrl + 'keyword/';
-
+		
         return {
 
             /**
@@ -25,8 +25,9 @@ angular.module('frontendApp')
                 if (!Server.prod) {
                     return callback(Papers.papersMockup);
                 }
-                $http.get(keywordApi + phrase)
+                $http.get(keywordApi + phrase, { cache: true})
                     .then(function(response) {
+                    	Papers.cached = response.data;
                         callback(response.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },
