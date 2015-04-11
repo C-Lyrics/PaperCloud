@@ -28,6 +28,13 @@ describe('Application Homepage', function() {
             .toBeTruthy();
     });
 
+    it('should have a progress bar', function(){
+        var progressBar = browser.driver.findElement(by.css(
+            '#progress'));
+        expect(progressBar)
+            .toBeTruthy();
+    }
+
     it('should have a working name search button', function() {
         var btn = browser.driver.findElement(by.id('name-button'));
         expect(btn)
