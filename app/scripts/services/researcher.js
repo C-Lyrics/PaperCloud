@@ -27,7 +27,7 @@ angular.module('frontendApp')
                 if (!Server.prod) {
                     return callback(mockupNames);
                 }
-                $http.get(nameApi + name)
+                $http.get(nameApi + name, { cache: true})
                     .then(function(res) {
                         callback(res.data);
                     }, Server.errorHandler);
@@ -44,8 +44,9 @@ angular.module('frontendApp')
                 if (!Server.prod) {
                     return callback(Papers.papersMockup);
                 }
-                $http.get(acApi + name)
+                $http.get(acApi + name, { cache: true})
                     .then(function(res) {
+                    	Papers.cached = res.data;
                         callback(res.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },

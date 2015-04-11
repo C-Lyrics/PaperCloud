@@ -85,5 +85,11 @@ describe('Service: Papers', function() {
                 weight: 800,
             }, ]);
     });
+    
+    it('should have a cache data structure', function() {
+    	expect(Papers.cached.length).toEqual(0);
+    	
+    	expect(typeof Papers.cached).toEqual('object');
+    });
 
 });
