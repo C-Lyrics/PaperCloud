@@ -31,6 +31,13 @@ angular.module('frontendApp')
                 });
                 scope.width = 250;
                 scope.color = ['#FF0000', '#00FF00', '#0000FF', '#FF00FF'];
+                var line = new ProgressBar.Line('#progress', {
+                    color: '#FCB03C'
+                });
+                line.animate(1);
+                
             }
+            
+
         };
     });
