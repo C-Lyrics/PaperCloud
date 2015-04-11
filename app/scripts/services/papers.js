@@ -27,7 +27,7 @@ angular.module('frontendApp')
                     'one', 'your', 're', 'let', 's', 'only', 'myself',
                     'other', 'ours', 'same', 'that', 'these', 'those',
                     'this', 'them', 'then', 'their', 'under', 'until', 've',
-                    'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my'
+                    'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my', 'and'
                 ],
                 i, reg;
             allPapers = allPapers.toLowerCase();
