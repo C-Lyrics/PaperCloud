@@ -52,22 +52,7 @@ describe('Application Homepage', function() {
         var link = browser.driver.findElement(by.id('cWordCloud_word_0'));
         expect(!!link)
             .toBeTruthy();
-        expect(!!link.getAttribute('ng-click'))
+        expect(!!link.onclick)
             .toBeTruthy();
     });
-
-    it('should have a double click event on the word cloud', function() {
-        var btn = browser.driver.findElement(by.id('keyword-button')),
-            search = browser.driver.findElement(by.id('keyword-search'));
-        search.sendKeys('example');
-        btn.click();
-        browser.driver.sleep(2000);
-        var link = browser.driver.findElement(by.id('cWordCloud_word_0'));
-        expect(!!link)
-            .toBeTruthy();
-        expect(!!link.getAttribute('ng-click'))
-            .toBeTruthy();
-    });
-
-
 });
