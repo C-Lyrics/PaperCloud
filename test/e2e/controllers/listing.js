@@ -2,19 +2,18 @@
 
 describe('Listing Page', function() {
     beforeEach(function() {
-        var searchButton, searchInput;
+        var searchButton, searchInput, word;
         browser.get('http://localhost:9000/');
         browser.driver.sleep(3000);
         searchButton = browser.driver.findElement(by.id(
             'keyword-button'));
         searchInput = browser.driver.findElement(by.id('keyword-search'));
         searchInput.sendKeys('quantum');
-        searchButton.click()
-            .then(function() {
-                var word = browser.driver.findElement(by.id(
-                    'cWordCloud_word_0'));
-                word.click();
-            });
+        searchButton.click();
+        word = browser.driver.findElement(by.id(
+            'cWordCloud_word_0'));
+        browser.driver.sleep(3000);
+        word.click();
         browser.driver.sleep(2000);
 
         browser.ignoreSynchronization = true;
