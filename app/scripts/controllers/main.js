@@ -24,14 +24,14 @@ angular.module('frontendApp')
 
     initProgressBar = function(callback) {
         document.getElementById('progress').innerHTML = '<div id="prog-bar"></div>';
-        var ProgressBar = require('progressbar.js');
         var line = new ProgressBar.Line('#prog-bar', {
-            color: '#FCB03C',
+            color: '#438BD2',
             strokeWidth: 2,
-            trailWidth: 1,
+            trailWidth: 2,
             duration: 2500,
             text: {
-                value: '0'
+                value: '0',
+                color: '#000000',
             },
             step: function(state, bar) {
                 bar.setText((bar.value() * 100).toFixed(0));
@@ -42,8 +42,9 @@ angular.module('frontendApp')
         return line;
     };
 
-    removeProgressBar = function(line) {
-        // document.getElementById('progress').innerHTML = '';
+    removeProgressBar = function() {
+        var removeProgress = document.querySelectorAll('#progress');
+        $(removeProgress).hide(); 
     };
        
 
@@ -61,8 +62,8 @@ angular.module('frontendApp')
             line = initProgressBar(function() {
             Researcher.getPapers(name, function(papers) {
                 $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
+                removeProgressBar();
             });
-            removeProgressBar();
             });
         };
 
@@ -80,8 +81,8 @@ angular.module('frontendApp')
             line = initProgressBar(function() {
             Keyword.getPapers(phrase, function(papers) {
                 $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
+                removeProgressBar();
             });
-            removeProgressBar();
             });
         };
 

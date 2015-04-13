@@ -8,7 +8,7 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-    .factory('Researcher', function($http, Server, Papers) {
+    .factory('Researcher', function($http, $timeout, Server, Papers) {
 
         var nameApi = Server.ServerUrl + 'name/';
         var acApi = Server.ServerUrl + 'name_ac/';
@@ -42,7 +42,10 @@ angular.module('frontendApp')
              */
             getPapers: function(name, callback) {
                 if (!Server.prod) {
-                    return callback(Papers.papersMockup);
+                    $timeout(function() {
+                        return callback(Papers.papersMockup);
+                    }, 2500);
+                    return;
                 }
                 $http.get(acApi + name, { cache: true})
                     .then(function(res) {

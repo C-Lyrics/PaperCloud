@@ -8,7 +8,7 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-    .factory('Keyword', function($http, Server, Papers) {
+    .factory('Keyword', function($http, $timeout, Server, Papers) {
 
         var keywordApi = Server.ServerUrl + 'keyword/';
 		
@@ -23,7 +23,10 @@ angular.module('frontendApp')
              */
             getPapers: function(phrase, callback) {
                 if (!Server.prod) {
-                    return callback(Papers.papersMockup);
+                    $timeout(function() {
+                        return callback(Papers.papersMockup);
+                    }, 2500);
+                    return;
                 }
                 $http.get(keywordApi + phrase, { cache: true})
                     .then(function(response) {
