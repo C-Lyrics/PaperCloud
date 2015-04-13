@@ -7,7 +7,7 @@
  * # cPaperCloud
  */
 angular.module('frontendApp')
-    .directive('cPaperCloud', function($compile) {
+    .directive('cPaperCloud', function($location) {
         return {
             templateUrl: 'views/directives/cPaperCloud.html',
             restrict: 'EACM',
@@ -54,10 +54,10 @@ angular.module('frontendApp')
                     }
                 });
                 scope.color = ['#FF0000', '#00FF00', '#0000FF', '#FF00FF'];
-
+                
                 scope.redirectTo = function(word) {
-                    alert('Redirecting for word: ' + word);
-                };
+                    $location.path( "/listing/" + word );
+                }; 
 
                 scope.runNewSearch = function(word) {
                     alert('Generating new word cloud for: ' + word);
