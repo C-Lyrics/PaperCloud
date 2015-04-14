@@ -62,4 +62,5 @@ describe('Application Homepage', function() {
         expect(!!link.onclick)
             .toBeTruthy();
     });
+
 });

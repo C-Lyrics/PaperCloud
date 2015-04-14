@@ -14,6 +14,7 @@ angular.module('frontendApp')
             replace: false,
             scope: {
                 words: '=words',
+                doublecc: '=doublecc'
             },
             link: function postLink(scope, element, attrs) {
                 scope.clicks = 0;
@@ -21,7 +22,7 @@ angular.module('frontendApp')
                     scope.clicks++;
                     if (scope.clicks === 1) {
                         setTimeout(function() {
-                            if (scope.clicks == 1) {
+                            if (scope.clicks === 1) {
                                 single(arg);
                             }
                             else {
@@ -42,14 +43,12 @@ angular.module('frontendApp')
                                             scope.redirectTo(curr.text);
                                         },
                                         function(event) {
-                                            scope.runNewSearch(curr
-                                                .text);
-                                        },
-                                        event
+                                            scope.runNewSearch(curr.text);
+                                        }, event
                                     );
                                 }
                             };
-                            return curr
+                            return curr;
                         });
                     }
                 });
@@ -60,7 +59,7 @@ angular.module('frontendApp')
                 };
 
                 scope.runNewSearch = function(word) {
-                    alert('Generating new word cloud for: ' + word);
+                    scope.doublecc(word);
                 };
             }
         };
