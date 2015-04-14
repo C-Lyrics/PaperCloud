@@ -34,7 +34,7 @@ angular
                 templateUrl: 'views/history.html',
                 controller: 'HistoryCtrl'
             })
-            .when('/listing', {
+            .when('/listing/:word', {
                 templateUrl: 'views/listing.html',
                 controller: 'ListingCtrl'
             })
