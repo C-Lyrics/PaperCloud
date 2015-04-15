@@ -15,6 +15,7 @@ angular.module('frontendApp')
                 replace: false,
                 scope: {
                     words: '=words',
+                    doublecc: '=doublecc'
                 },
                 link: function postLink(scope, element, attrs) {
                     scope.clicks = 0;
@@ -66,7 +67,7 @@ angular.module('frontendApp')
                     };
 
                     scope.runNewSearch = function(word) {
-                        alert('Generating new word cloud for: ' + word);
+                        scope.doublecc(word);
                     };
                 }
             };

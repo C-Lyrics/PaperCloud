@@ -82,9 +82,10 @@ angular.module('frontendApp')
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
                          search term and assign the words scope to the topWords of the paper]
          */
-        $scope.launchKeywordSearch = function() {
-            var line,
-                phrase = $scope.keywordSearch.trim();
+        $scope.launchKeywordSearch = function(phrase) {
+            var line;
+            phrase = phrase || $scope.keywordSearch;
+            phrase = phrase.trim();
             if (isEmpty(phrase)) {
                 return;
             }
@@ -101,5 +102,4 @@ angular.module('frontendApp')
                 });
             });
         };
-
     });

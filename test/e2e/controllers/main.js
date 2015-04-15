@@ -49,10 +49,10 @@ describe('Application Homepage', function() {
                     .toBe('launchKeywordSearch');
             });
 
+
             it('should have a click event on the word cloud', function() {
                 var btn = browser.driver.findElement(by.id('keyword-button')),
-                    search = browser.driver.findElement(by.id(
-                        'keyword-search'));
+                    search = browser.driver.findElement(by.id('keyword-search'));
                 search.sendKeys('example');
                 btn.click();
                 browser.driver.sleep(2000);
