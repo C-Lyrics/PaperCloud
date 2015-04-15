@@ -8,8 +8,13 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('ListingCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'Listing'
-    ];
-  });
+    .controller('ListingCtrl', function($scope, $routeParams, Papers) {
+        $scope.word = $routeParams.word;
+
+        $scope.papers = Papers.cached.map(function(idx, curr) {
+            return {
+                title: 'esdgdfg',
+                count: 'sdfgsdfg',
+            };
+        });
+    });
