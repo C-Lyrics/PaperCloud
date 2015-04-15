@@ -8,7 +8,8 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('MainCtrl', function($scope, Keyword, Researcher, Papers) {
+    .controller('MainCtrl', function($scope, $timeout, Keyword, Researcher,
+        Papers) {
         var nbTopWords = 250,
             isEmpty, initProgressBar, removeProgressBar;
 
@@ -22,31 +23,34 @@ angular.module('frontendApp')
             return empty;
         };
 
-    initProgressBar = function(callback) {
-        document.getElementById('progress').innerHTML = '<div id="prog-bar"></div>';
-        var line = new ProgressBar.Line('#prog-bar', {
-            color: '#438BD2',
-            strokeWidth: 2,
-            trailWidth: 2,
-            duration: 2500,
-            text: {
-                value: '0',
-                color: '#000000',
-            },
-            step: function(state, bar) {
-                bar.setText((bar.value() * 100).toFixed(0));
-            }
-        });
-        line.animate(1);
-        callback();
-        return line;
-    };
+        initProgressBar = function(callback) {
+            document.getElementById('progress')
+                .innerHTML = '<div id="prog-bar"></div>';
+            var line = new ProgressBar.Line('#prog-bar', {
+                color: '#438BD2',
+                strokeWidth: 2,
+                trailWidth: 2,
+                duration: 7500,
+                text: {
+                    value: '0',
+                    color: '#000000',
+                },
+                step: function(state, bar) {
+                    bar.setText((bar.value() * 100)
+                        .toFixed(0));
+                }
+            });
+            line.animate(1);
+            callback();
+            return line;
+        };
 
-    removeProgressBar = function() {
-        var removeProgress = document.querySelectorAll('#progress');
-        $(removeProgress).hide(); 
-    };
-       
+        removeProgressBar = function() {
+            var removeProgress = document.querySelectorAll('#progress');
+            $(removeProgress)
+                .hide();
+        };
+
 
         /**
          * [launchNameSearch description]
@@ -54,16 +58,22 @@ angular.module('frontendApp')
                          search term and assign the words scope to the topWords of the paper]
          */
         $scope.launchNameSearch = function() {
-            var line, 
-            name = $scope.nameSearch.trim();
+            var line,
+                name = $scope.nameSearch.trim();
             if (isEmpty(name)) {
                 return;
             }
             line = initProgressBar(function() {
-            Researcher.getPapers(name, function(papers) {
-                $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
-                removeProgressBar();
-            });
+                Researcher.getPapers(name, function(papers) {
+                    line.set(1);
+                    $timeout(function() {
+                        removeProgressBar();
+                        $scope.words = Papers.getTopWords(
+                            nbTopWords,
+                            papers); //function in services/papers.js
+
+                    }, 100);
+                });
             });
         };
 
@@ -74,15 +84,21 @@ angular.module('frontendApp')
          */
         $scope.launchKeywordSearch = function() {
             var line,
-            phrase = $scope.keywordSearch.trim();
+                phrase = $scope.keywordSearch.trim();
             if (isEmpty(phrase)) {
                 return;
             }
             line = initProgressBar(function() {
-            Keyword.getPapers(phrase, function(papers) {
-                $scope.words = Papers.getTopWords(nbTopWords, papers); //function in services/papers.js
-                removeProgressBar();
-            });
+                Keyword.getPapers(phrase, function(papers) {
+                    line.set(1);
+                    $timeout(function() {
+                        removeProgressBar();
+                        $scope.words = Papers.getTopWords(
+                            nbTopWords,
+                            papers); //function in services/papers.js
+
+                    }, 100);
+                });
             });
         };
 
