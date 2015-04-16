@@ -11,7 +11,8 @@ angular.module('frontendApp')
     .factory('Keyword', function($http, $timeout, Server, Papers) {
 
         var keywordApi = Server.ServerUrl + 'keyword/',
-            ieeeAPI = 'v2/IEEE/keyword/';
+            ieeeAPI = Server.ServerUrl + 'IEEE/keyword/',
+            ieeePapersAPI = Server.ServerUrl + 'IEEE/id/';
 
         return {
 
@@ -39,8 +40,24 @@ angular.module('frontendApp')
             },
 
             getPapersUpdateProgress: function(phrase, updater, callback) {
-                $http.get()
-                    .then();
+                Papers.cached = [];
+                $http.get(ieeeAPI + phrase, {
+                    cache: true
+                })
+                    .then(function(res) {
+                        var i, papersId = res.data;
+                        for (i = 0; i < papersId.length; i++) {
+                            $http.get(ieeePapersAPI + papersId[i], {
+                                cache: true,
+                            })
+                                .then(function(res2) {
+                                    var val = updater.value();
+                                    updater.set(val + .05);
+                                    Papers.cached.push(res2.data[0]);
+                                    callback(Papers.cached);
+                                }, Server.errorHandler);
+                        }
+                    }, Server.errorHandler);
             },
         };
     });
