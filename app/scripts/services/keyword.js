@@ -10,8 +10,9 @@
 angular.module('frontendApp')
     .factory('Keyword', function($http, $timeout, Server, Papers) {
 
-        var keywordApi = Server.ServerUrl + 'keyword/';
-		
+        var keywordApi = Server.ServerUrl + 'keyword/',
+            ieeeAPI = 'v2/IEEE/keyword/';
+
         return {
 
             /**
@@ -28,11 +29,18 @@ angular.module('frontendApp')
                     }, 2500);
                     return;
                 }
-                $http.get(keywordApi + phrase, { cache: true})
+                $http.get(keywordApi + phrase, {
+                    cache: true
+                })
                     .then(function(response) {
-                    	Papers.cached = response.data;
+                        Papers.cached = response.data;
                         callback(response.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
+            },
+
+            getPapersUpdateProgress: function(phrase, updater, callback) {
+                $http.get()
+                    .then();
             },
         };
     });

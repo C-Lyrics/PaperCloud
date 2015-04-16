@@ -51,7 +51,6 @@ angular.module('frontendApp')
                 .hide();
         };
 
-
         /**
          * [launchNameSearch description]
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
@@ -97,7 +96,6 @@ angular.module('frontendApp')
                         $scope.words = Papers.getTopWords(
                             nbTopWords,
                             papers); //function in services/papers.js
-
                     }, 100);
                 });
             });
