@@ -11,7 +11,7 @@ angular.module('frontendApp')
     .controller('MainCtrl', function($scope, $timeout, Keyword, Researcher,
         Papers) {
         var nbTopWords = 250,
-            isEmpty, initProgressBar, removeProgressBar;
+            isEmpty, initProgressBar, removeProgressBar, timedOut;
 
         $scope.words = [];
 
@@ -51,6 +51,17 @@ angular.module('frontendApp')
                 .hide();
         };
 
+
+        timedOut = function(line, papers) {
+            line.set(1);
+            $timeout(function() {
+                removeProgressBar();
+                $scope.words = Papers.getTopWords(
+                    nbTopWords,
+                    papers); //function in services/papers.js
+
+            }, 100);
+        }
         /**
          * [launchNameSearch description]
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
@@ -64,14 +75,7 @@ angular.module('frontendApp')
             }
             line = initProgressBar(function() {
                 Researcher.getPapers(name, function(papers) {
-                    line.set(1);
-                    $timeout(function() {
-                        removeProgressBar();
-                        $scope.words = Papers.getTopWords(
-                            nbTopWords,
-                            papers); //function in services/papers.js
-
-                    }, 100);
+                    timedOut(line, papers);
                 });
             });
         };
@@ -90,13 +94,7 @@ angular.module('frontendApp')
             }
             line = initProgressBar(function() {
                 Keyword.getPapers(phrase, function(papers) {
-                    line.set(1);
-                    $timeout(function() {
-                        removeProgressBar();
-                        $scope.words = Papers.getTopWords(
-                            nbTopWords,
-                            papers); //function in services/papers.js
-                    }, 100);
+                    timedOut(line, papers);
                 });
             });
         };
