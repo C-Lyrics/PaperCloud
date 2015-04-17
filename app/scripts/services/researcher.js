@@ -21,7 +21,7 @@ angular.module('frontendApp')
              * [getAutocomplete description]
              * @param  {[type]}   name     [used as a search term to collect all research papers to generate Autocomplete]
              * @param  {Function} callback [if process goes well from grabbing from API, will prceed with passed function (callback)]
-             * @return {[type]}            [will return autocompletes for the serach bars]
+             * @return {[type]}            [will return autocompletes for the search bars]
              */
             getAutocomplete: function(name, callback) {
                 if (!Server.prod) {
