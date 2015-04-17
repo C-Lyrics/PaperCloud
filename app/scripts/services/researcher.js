@@ -10,7 +10,7 @@
 angular.module('frontendApp')
     .factory('Researcher', function($http, $timeout, Server, Papers) {
 
-        var nameApi = Server.ServerUrl + 'name/';
+        var nameApi = Server.ServerUrl + 'IEEE/v2/name/';
         var acApi = Server.ServerUrl + 'name_ac/';
         // TODO: Add more fake names for autocomplete
         var mockupNames = ['Fake', ];
@@ -49,7 +49,7 @@ angular.module('frontendApp')
                     }, 2500);
                     return;
                 }
-                $http.get(acApi + name, {
+                $http.get(nameApi + name, {
                     cache: true
                 })
                     .then(function(res) {

@@ -10,7 +10,7 @@
 angular.module('frontendApp')
     .factory('Keyword', function($http, $timeout, Server, Papers) {
 
-        var keywordApi = Server.ServerUrl + 'keyword/',
+        var keywordApi = Server.ServerUrl + 'IEEE/v2/keyword/',
             ieeeAPI = Server.ServerUrl + 'IEEE/keyword/',
             ieeePapersAPI = Server.ServerUrl + 'IEEE/id/';
 
