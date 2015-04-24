@@ -58,7 +58,6 @@ angular.module('frontendApp')
                 $scope.words = Papers.getTopWords(
                     nbTopWords,
                     papers); //function in services/papers.js
-
             }, 100);
         }
         /**
@@ -72,6 +71,8 @@ angular.module('frontendApp')
             if (isEmpty(name)) {
                 return;
             }
+            Papers.lastSearch.researcher = false;
+            Papers.lastSearch.input = phrase;
             line = initProgressBar(function() {
                 Researcher.getPapers(name, function(papers) {
                     displayWordCloud(line, papers);
@@ -91,6 +92,8 @@ angular.module('frontendApp')
             if (isEmpty(phrase)) {
                 return;
             }
+            Papers.lastSearch.researcher = false;
+            Papers.lastSearch.input = phrase;
             line = initProgressBar(function() {
                 Keyword.getPapers(phrase, function(papers) {
                     displayWordCloud(line, papers);
