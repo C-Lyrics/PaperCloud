@@ -1,13 +1,16 @@
-<h3>{{word}}</h3>
-<table id="paper-list" class="table table-compact">
-    <header>
-        <tr>
-            <th>n°</th>
-            <th>Title</th>
-            <th>Count</th>
-        </tr>
-    </header>
-    <body>
-    <tr ng-repeat="(idx, paper) in papers|orderBy:'count':true"><td>{{idx + 1}}</td><td>{{paper.title}}</td><td>{{paper.count}}</td></tr>
-    </body>
-</table>
+<div class="col-sm-12">
+    <h3>{{word}}</h3>
+    <table id="paper-list" class="table table-compact">
+        <header>
+            <tr>
+                <th>n°</th>
+                <th>Title</th>
+                <th>Count</th>
+            </tr>
+        </header>
+        <body>
+        <tr ng-repeat="(idx, paper) in papers|orderBy:'count':true"><td>{{idx + 1}}</td><td>{{paper.title}}</td><td>{{paper.count}}</td></tr>
+        </body>
+    </table>
+    <a class= "btn btn-primary" ng-href="{{navigateToCloud}}" id="navToWC-button"> Back to Cloud </a>
+</div>

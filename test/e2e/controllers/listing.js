@@ -25,11 +25,12 @@ describe('Listing Page', function() {
         expect(!!list)
         .toBeTruthy();
     });
+    
     it('should have a navigation button back to the word cloud', function() {
         var navbuttonWC = browser.driver.findElement(by.id('navToWC-button'));
         expect(btn)
         .toBeTruthy();
-        expect(btn.getAttribute('ng-click'))
-        .toBe('navigateToCloud');
+        expect(btn.getAttribute('ng-href'))
+        .toBe('#/');
     }); 
 });
