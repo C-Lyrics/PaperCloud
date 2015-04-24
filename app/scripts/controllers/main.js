@@ -46,9 +46,8 @@ angular.module('frontendApp')
         };
 
         removeProgressBar = function() {
-            var removeProgress = document.querySelectorAll('#progress');
-            $(removeProgress)
-                .hide();
+            var removeProgress = document.getElementById('progress');
+            removeProgress.innerHTML = '';
         };
 
 
