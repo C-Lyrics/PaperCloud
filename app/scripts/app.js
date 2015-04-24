@@ -26,10 +26,6 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/home', {
-                templateUrl: 'views/main.html',
-                controller: 'HistoryCtrl'
-            })
             .when('/history', {
                 templateUrl: 'views/history.html',
                 controller: 'HistoryCtrl'
