@@ -14,6 +14,13 @@ describe('Application Homepage', function() {
                 .toEqual('PaperCloud');
         });
 
+        it('should not have a dash at the top of the page', function() {
+            var dash = browser.driver.findElement(by.css(
+                'div.header'));
+            expect(dash)
+                .toBeTruthy();
+        });
+
         it('should have a keyword search bar', function() {
             var searchKeyword = browser.driver.findElement(by.css(
                 '#keyword-search'));
@@ -38,24 +45,25 @@ describe('Application Homepage', function() {
                     '#progress'));
                 expect(progressBar)
                     .toBeTruthy();
-            }
+        });
 
-            it('should have a working name search button', function() {
+        it('should have a working name search button', function() {
                 var btn = browser.driver.findElement(by.id('name-button'));
                 expect(btn)
                     .toBeTruthy();
                 expect(btn.getAttribute('ng-click'))
                     .toBe('launchNameSearch');
-            }); it('should have a working keyword search button', function() {
+        }); 
+
+        it('should have a working keyword search button', function() {
                 var btn = browser.driver.findElement(by.id('keyword-button'));
                 expect(btn)
                     .toBeTruthy();
                 expect(btn.getAttribute('ng-click'))
                     .toBe('launchKeywordSearch');
-            });
+        });
 
-
-            it('should have a click event on the word cloud', function() {
+        it('should have a click event on the word cloud', function() {
                 var btn = browser.driver.findElement(by.id('keyword-button')),
                     search = browser.driver.findElement(by.id('keyword-search'));
                 search.sendKeys('example');
@@ -67,5 +75,5 @@ describe('Application Homepage', function() {
                     .toBeTruthy();
                 expect(!!link.onclick)
                     .toBeTruthy();
-            });
         });
+});
