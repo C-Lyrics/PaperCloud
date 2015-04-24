@@ -21,6 +21,11 @@ describe('Application Homepage', function() {
                 .toBeTruthy();
         });
 
+        it('should not have a home button.', function() {
+            var homeButton = browser.driver.findElement(by.css('#home-nav'));
+            expect(!!homeButton).toBe(false);
+        });
+
         it('should have a name search bar', function() {
             var searchName = browser.driver.findElement(by.css(
                 '#name-search'));

@@ -10,7 +10,7 @@
 angular.module('frontendApp')
     .service('Server', function() {
 
-        this.prod = true;
+        this.prod = false;
 
         this.Url = 'http://localhost:9000/';
 
