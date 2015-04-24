@@ -23,6 +23,13 @@ describe('Listing Page', function() {
     it('should have a list of papers', function() {
         var list = browser.driver.findElement(by.id('paper-list'))
         expect(!!list)
-            .toBeTruthy();
+        .toBeTruthy();
     });
+    it('should have a navigation button back to the word cloud', function() {
+        var navbuttonWC = browser.driver.findElement(by.id('navToWC-button'));
+        expect(btn)
+        .toBeTruthy();
+        expect(btn.getAttribute('ng-click'))
+        .toBe('navigateToCloud');
+    }); 
 });
