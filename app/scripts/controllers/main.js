@@ -11,7 +11,7 @@ angular.module('frontendApp')
     .controller('MainCtrl', function($scope, $timeout, Keyword, Researcher,
         Papers) {
         var nbTopWords = 250,
-            isEmpty, initProgressBar, removeProgressBar, timedOut;
+            isEmpty, initProgressBar, removeProgressBar, displayWordCloud;
 
         $scope.words = [];
 
@@ -52,7 +52,7 @@ angular.module('frontendApp')
         };
 
 
-        timedOut = function(line, papers) {
+        displayWordCloud= function(line, papers) {
             line.set(1);
             $timeout(function() {
                 removeProgressBar();
@@ -75,7 +75,7 @@ angular.module('frontendApp')
             }
             line = initProgressBar(function() {
                 Researcher.getPapers(name, function(papers) {
-                    timedOut(line, papers);
+                    displayWordCloud(line, papers);
                 });
             });
         };
@@ -94,7 +94,7 @@ angular.module('frontendApp')
             }
             line = initProgressBar(function() {
                 Keyword.getPapers(phrase, function(papers) {
-                    timedOut(line, papers);
+                    displayWordCloud(line, papers);
                 });
             });
         };
