@@ -12,4 +12,5 @@ angular.module('frontendApp')
     $scope.awesomeThings = [
       'Hisotry'
     ];
+    $scope.navigateToCloud = "#/";
   });
