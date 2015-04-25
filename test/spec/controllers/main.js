@@ -15,4 +15,13 @@ describe('Controller: MainCtrl', function() {
             $scope: scope
         });
     }));
+
+    it('should generate a wordcloud if a search has already been done.',
+        function() {
+            var PapersService;
+            beforeEach(inject(function(_Papers_) {
+                PapersService = _Papers_;
+            }));
+        });
+
 });

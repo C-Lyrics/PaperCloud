@@ -53,7 +53,7 @@ describe('Application Homepage', function() {
                     .toBeTruthy();
                 expect(btn.getAttribute('ng-click'))
                     .toBe('launchNameSearch');
-        }); 
+        });
 
         it('should have a working keyword search button', function() {
                 var btn = browser.driver.findElement(by.id('keyword-button'));
