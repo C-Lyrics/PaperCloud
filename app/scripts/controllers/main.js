@@ -51,7 +51,7 @@ angular.module('frontendApp')
         };
 
 
-        displayWordCloud= function(line, papers) {
+        displayWordCloud = function(line, papers) {
             line.set(1);
             $timeout(function() {
                 removeProgressBar();
@@ -59,16 +59,29 @@ angular.module('frontendApp')
                     nbTopWords,
                     papers); //function in services/papers.js
             }, 100);
-        }
+        };
+
+        $scope.makePreviousSearch = function(searchConfig) {
+            if (searchConfig.input.trim()) {
+                if (searchConfig.researcher) {
+                    return $scope.launchNameSearch(searchConfig.input);
+                }
+                else {
+                    return $scope.launchKeywordSearch(searchConfig.input);
+                }
+            }
+        };
+
         /**
          * [launchNameSearch description]
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
                          search term and assign the words scope to the topWords of the paper]
          */
-        $scope.launchNameSearch = function() {
-            var line,
-                name = $scope.nameSearch.trim();
-            if (isEmpty(name)) {
+        $scope.launchNameSearch = function(phrase) {
+            var line;
+            phrase = phrase || $scope.keywordSearch;
+            phrase = phrase.trim();
+            if (isEmpty(phrase)) {
                 return;
             }
             Papers.lastSearch.researcher = false;
@@ -100,4 +113,6 @@ angular.module('frontendApp')
                 });
             });
         };
+
+        $scope.makePreviousSearch(Papers.lastSearch);
     });
