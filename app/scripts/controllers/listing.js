@@ -12,10 +12,8 @@ angular.module('frontendApp')
         $scope.word = $routeParams.word;
 
         $scope.papers = Papers.cached.map(function(curr, idx) {
-            return {
-                title: curr.title,
-                count: Papers.countFrequency($scope.word, curr.content),
-            };
+            curr.count = Papers.countFrequency($scope.word, curr.content);
+            return curr;
         });
 
         $scope.papers = $scope.papers.filter(function(curr, idx) {
