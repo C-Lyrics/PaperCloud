@@ -48,6 +48,8 @@ angular.module('frontendApp')
         removeProgressBar = function() {
             var removeProgress = document.getElementById('progress');
             removeProgress.innerHTML = '';
+            $scope.keywordSearch = '';
+            $scope.nameSearch = '';
         };
 
 
