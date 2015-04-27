@@ -92,7 +92,7 @@ describe('Application Homepage', function() {
                 wordcloud;
             nameSearch.sendKeys('example');
             searchBtn.click();
-            wordcloud = browser.driver.findElement(by.css('cWordCloud_word_0'));
+            wordcloud = browser.driver.findElement(by.css('#cWordCloud_word_0'));
             expect(wordcloud).toBeTruthy();
         });
 });

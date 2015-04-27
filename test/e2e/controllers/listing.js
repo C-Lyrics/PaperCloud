@@ -25,12 +25,32 @@ describe('Listing Page', function() {
         expect(!!list)
         .toBeTruthy();
     });
-    
+
     it('should have a navigation button back to the word cloud', function() {
         var navbuttonWC = browser.driver.findElement(by.id('navToWC-button'));
         expect(btn)
         .toBeTruthy();
         expect(btn.getAttribute('ng-href'))
         .toBe('#/');
-    }); 
+    });
+
+    it('should have a publisher', function() {
+        var publisher = browser.driver.findElement(by.css('.paper-publisher'));
+        expect(publisher).toBeTruthy();
+    });
+
+    it('should have a date', function() {
+        var date = browser.driver.findElement(by.css('.paper-date'));
+        expect(date).toBeTruthy();
+    });
+
+    it('should have a author', function() {
+        var author = browser.driver.findElement(by.css('.paper-author'));
+        expect(author).toBeTruthy();
+    });
+
+    it('should have a title', function() {
+        var title = browser.driver.findElement(by.css('.paper-title'));
+        expect(title).toBeTruthy();
+    });
 });
