@@ -27,7 +27,7 @@ angular.module('frontendApp')
                 if (!Server.prod) {
                     $timeout(function() {
                         return callback(Papers.papersMockup);
-                    }, 2500);
+                    }, 6500);
                     return;
                 }
                 $http.get(keywordApi + phrase, {

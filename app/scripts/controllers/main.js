@@ -40,7 +40,9 @@ angular.module('frontendApp')
                         .toFixed(0));
                 }
             });
-            line.animate(1);
+            line.animate(1, function(){
+                line.animate(0);
+            });
             callback();
             return line;
         };
@@ -59,7 +61,7 @@ angular.module('frontendApp')
                     nbTopWords,
                     papers); //function in services/papers.js
             }, 100);
-        }
+        };
         /**
          * [launchNameSearch description]
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
