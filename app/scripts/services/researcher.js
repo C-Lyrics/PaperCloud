@@ -45,6 +45,7 @@ angular.module('frontendApp')
             getPapers: function(name, callback) {
                 if (!Server.prod) {
                     $timeout(function() {
+                        Papers.cached = Papers.papersMockup;
                         return callback(Papers.papersMockup);
                     }, 2500);
                     return;
