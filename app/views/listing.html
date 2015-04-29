@@ -9,8 +9,19 @@
             </tr>
         </header>
         <body>
-        <tr ng-repeat="(idx, paper) in papers|orderBy:'count':true"><td>{{idx + 1}}</td><td>{{paper.title}}</td><td>{{paper.count}}</td></tr>
+            <tr ng-repeat="(idx, paper) in papers|orderBy:'count':true">
+                <td>{{idx + 1}}</td>
+                <td>
+                    <a ng-href="{{paper.link}}" class="paper-title">{{paper.title}}</a>,
+                    <b class="paper-author">{{paper.author}}</b>,
+                    <i class="paper-date">{{paper.date}}</i>, 
+                    in <span class="paper-publisher">
+                    {{paper.publisher}}
+                    </span>               
+                </td>
+                <td>{{paper.count}}</td>
+            </tr>
         </body>
     </table>
-    <a class= "btn btn-primary" ng-href="{{navigateToCloud}}" id="navToWC-button"> Back to Cloud </a>
+    <a class="btn btn-primary" ng-href="{{navigateToCloud}}" id="navToWC-button"> Back to Cloud </a>
 </div>

@@ -28,7 +28,7 @@ angular.module('frontendApp')
                     $timeout(function() {
                         Papers.cached = Papers.papersMockup;
                         return callback(Papers.papersMockup);
-                    }, 6500);
+                    }, 250);
                     return;
                 }
                 $http.get(keywordApi + phrase, {
