@@ -82,7 +82,7 @@ angular.module('frontendApp')
          */
         $scope.launchNameSearch = function(phrase) {
             var line;
-            phrase = phrase || $scope.keywordSearch;
+            phrase = phrase || $scope.nameSearch;
             phrase = phrase.trim();
             if (isEmpty(phrase)) {
                 return;
