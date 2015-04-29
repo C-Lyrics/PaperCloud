@@ -4,6 +4,7 @@
         <header>
             <tr>
                 <th>n°</th>
+                <th>Download</th>
                 <th>Title</th>
                 <th>Count</th>
             </tr>
@@ -12,7 +13,10 @@
             <tr ng-repeat="(idx, paper) in papers|orderBy:'count':true">
                 <td>{{idx + 1}}</td>
                 <td>
-                    <a ng-href="{{paper.link}}" class="paper-title">{{paper.title}}</a>,
+                    <a ng-href="{{paper.link}}" class="download-link btn btn-sm btn-info" target="_blank">Download</a>
+                </td>
+                <td>
+                    <a ng-click="" class="paper-title">{{paper.title}}</a>,
                     <b class="paper-author">{{paper.author}}</b>,
                     <i class="paper-date">{{paper.date}}</i>, 
                     in <span class="paper-publisher">
