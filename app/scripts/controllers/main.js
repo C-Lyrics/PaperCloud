@@ -22,7 +22,11 @@ angular.module('frontendApp')
             }
             return empty;
         };
-
+        /**
+         * [initProgressBar description]
+         * @param  {[]} [creates the loading bar and initiates progress of word cloud generation]
+         * @return {[type]} line [returns the finished progress bar]
+         */
         initProgressBar = function(callback) {
             document.getElementById('progress')
                 .innerHTML = '<div id="prog-bar"></div>';
@@ -40,19 +44,26 @@ angular.module('frontendApp')
                         .toFixed(0));
                 }
             });
-            line.animate(1);
+            line.animate(1, function(){
+                line.animate(0);
+            });
             callback();
             return line;
         };
-
+        /**
+         * [removeProgressBar description]
+         * @param  {[]} [removes the progress bar once it is done generating a search]
+         */
         removeProgressBar = function() {
             var removeProgress = document.getElementById('progress');
             removeProgress.innerHTML = '';
             $scope.keywordSearch = '';
             $scope.nameSearch = '';
         };
-
-
+        /**
+         * [displayWordCloud description]
+         * @param  {[type]} line, papers [removes the progress bar (via line) and generates the actual WC]
+         */
         displayWordCloud = function(line, papers) {
             line.set(1);
             $timeout(function() {
@@ -62,7 +73,10 @@ angular.module('frontendApp')
                     papers); //function in services/papers.js
             }, 100);
         };
-
+        /**
+         * [makePreviousSearch description]
+         * @param  {[type ]} searchConfig [used for navigation button to generate the original WC when pressing 'back to cloud']
+         */
         $scope.makePreviousSearch = function(searchConfig) {
             if (searchConfig.input.trim()) {
                 if (searchConfig.researcher) {
@@ -73,7 +87,6 @@ angular.module('frontendApp')
                 }
             }
         };
-
         /**
          * [launchNameSearch description]
          * @param  {[]} [uses the function 'getpapers' to get all research appers from the given

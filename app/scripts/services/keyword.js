@@ -39,7 +39,11 @@ angular.module('frontendApp')
                         callback(response.data);
                     }, Server.errorHandler); //send an error message if something was wrong in the process of grabbing all papers from API
             },
-
+            /**
+             * [getPapersUpdateProgress description]
+             * @param  {[type]}   phrase, updater, callback   [gets papers associated with phrase. gets from the API]
+             * @param  {Function} callback [ caches papers and updates progress bar from the search]
+             */
             getPapersUpdateProgress: function(phrase, updater, callback) {
                 Papers.cached = [];
                 $http.get(ieeeAPI + phrase, {
