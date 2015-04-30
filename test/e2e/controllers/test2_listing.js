@@ -74,11 +74,9 @@ describe('Listing Page', function() {
     });
 
     it('should have clickable title words', function() {
-        var words = browser.driver.findElement(by.css('.paper-title[ng-href]'));
-        expect(words).toBeTruthy();
-    });
-
-    it('should have words which can create a new search', function() {
-
+        var words = browser.driver.findElement(by.css(
+            '.paper-title[ng-href]'));
+        expect(words)
+            .toBeTruthy();
     });
 });
