@@ -16,7 +16,7 @@
                     <a ng-href="{{paper.link}}" class="download-link btn btn-sm btn-info" target="_blank">Download</a>
                 </td>
                 <td>
-                    <a ng-click="" class="paper-title">{{paper.title}}</a>,
+                    <span class="paper-title" ng-click="reSearch(paper.title)">{{paper.title}}</span>,
                     <b class="paper-author">{{paper.author}}</b>,
                     <i class="paper-date">{{paper.date}}</i>, 
                     in <span class="paper-publisher">

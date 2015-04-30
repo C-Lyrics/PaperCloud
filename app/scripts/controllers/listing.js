@@ -11,6 +11,14 @@ angular.module('frontendApp')
     .controller('ListingCtrl', function($scope, $routeParams, Papers, Server) {
         $scope.word = $routeParams.word;
 
+        $scope.reSearch = function(word) {
+            Papers.lastSearch = {
+                input: word,
+                researcher: false,
+            };
+            window.location = '#/';
+        };
+
         $scope.papers = Papers.cached.map(function(curr, idx) {
             curr.count = Papers.countFrequency($scope.word, curr.content);
             return curr;
