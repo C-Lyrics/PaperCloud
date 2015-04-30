@@ -102,7 +102,7 @@ angular.module('frontendApp')
             Papers.lastSearch.researcher = false;
             Papers.lastSearch.input = phrase;
             line = initProgressBar(function() {
-                Researcher.getPapers(name, function(papers) {
+                Researcher.getPapers(phrase, function(papers) {
                     displayWordCloud(line, papers);
                 });
             });
