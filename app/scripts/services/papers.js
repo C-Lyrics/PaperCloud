@@ -96,11 +96,13 @@ angular.module('frontendApp')
             countFrequency: countFrequency,
             selectMostFrequents: selectMostFrequents,
 
+            //History for the last search
             lastSearch: {
                 input: '',
                 researcher: false,
             },
 
+            //List of the current papers under inspection
             cached: [],
 
             // TODO: Create more fake papers

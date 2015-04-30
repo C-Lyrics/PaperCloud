@@ -1,4 +1,4 @@
-# PaperCloud
+# PaperCloud [![Build Status](https://travis-ci.org/C-Lyrics/PaperCloud.svg?branch=master)](https://travis-ci.org/C-Lyrics/PaperCloud)
 
 ## Test Scores
 
