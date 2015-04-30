@@ -11,6 +11,11 @@ angular.module('frontendApp')
     .controller('ListingCtrl', function($scope, $routeParams, Papers, Server) {
         $scope.word = $routeParams.word;
 
+        /**
+         * [returns to the main page and generates a new search]
+         * @param  {string} [takes in title of paper]
+         * @return {[]} [returns nothing]
+         */
         $scope.reSearch = function(word) {
             Papers.lastSearch = {
                 input: word,
