@@ -19,16 +19,21 @@ angular.module('frontendApp')
          */
 
         extractWords = function(allPapers) {
-            var words = ['the', 'am', 'I', 'are', 'not', 't', 'they', 'me',
-                    'you', 'he', 'she', 'he', 'are', 'it', 'if', 'is', 'or',
+            var words = ['the', 'am', 'I', 'are', 'not', 't', 'they',
+                    'me',
+                    'you', 'he', 'she', 'he', 'are', 'it', 'if', 'is',
+                    'or',
                     'o', 'a', 'don', 'about', 'above', 'after', 'again',
                     'against', 'all', 'and', 'any', 'aren', 'as', 'act',
                     'herself', 'have', 'from', 'during', 'each', 'few',
-                    'for', 'how', 'was', 'were', 'very', 'too', 'to', 'two',
+                    'for', 'how', 'was', 'were', 'very', 'too', 'to',
+                    'two',
                     'one', 'your', 're', 'let', 's', 'only', 'myself',
                     'other', 'ours', 'same', 'that', 'these', 'those',
-                    'this', 'them', 'then', 'their', 'under', 'until', 've',
-                    'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my', 'and'
+                    'this', 'them', 'then', 'their', 'under', 'until',
+                    've',
+                    'why', 'us', 'an', 'in', 'on', 'do', 'up', 'my',
+                    'and'
                 ],
                 i, reg;
             allPapers = allPapers.toLowerCase();
@@ -38,10 +43,10 @@ angular.module('frontendApp')
             // Remove numbers
             allPapers = allPapers.replace(/\d*/g, '');
             // Removing stop words
-            for (i = 0; i < words.length; i++) {
-                reg = new RegExp('/' + words[i] + '/gi');
-                allPapers = allPapers.replace(reg, '');
-            }
+            //for (i = 0; i < words.length; i++) {
+            //reg = new RegExp('/' + words[i] + '/gi');
+            //allPapers = allPapers.replace(reg, '');
+            //}
             return allPapers.split(' ');
         };
 
@@ -64,10 +69,14 @@ angular.module('frontendApp')
          * @return int              The number of occurences
          */
         countFrequency = function(word, papers) {
+            //return Math.random() * 100;
+            debugger;
             word = word.toLowerCase();
             papers = papers.toLowerCase();
-            return (papers.split(word)
-                .length - 1);
+            //var reg = new RegExp('/' + word + '/');
+            //return (papers.match(reg) || [])
+                //.length;
+            return papers.split(word).length;
         };
 
         /**
@@ -148,7 +157,7 @@ angular.module('frontendApp')
                 date: '2013',
                 publisher: 'Neural Information Processing Systems',
                 link: 'http://www.tooski.ch',
-            },{
+            }, {
                 title: 'Equivalence Partitioning',
                 author: 'Jeff Kang',
                 content: 'Basic idea: to identify groups of test cases that may reveal same types of errors (e.g., erroneous handling of all inputs > 100) Partitioning the input domain into groups from which to derive test cases (also called equivalence classes). A group is a set of data whose components are likely to be treated homogeneously by the program. Ideal case: all test cases in a group have the same outcome',
@@ -169,16 +178,20 @@ angular.module('frontendApp')
              */
             getTopWords: function(nbTopWords, allPapers) {
                 var words;
-                allPapers = allPapers.reduce(function(prev, curr) {
+                allPapers = allPapers.reduce(function(prev,
+                    curr) {
                     return prev + ' ' + curr.content;
                 }, '');
                 words = extractWords(allPapers);
                 words = removeDuplicates(words); //remove the duplicates in the array
                 words = words.map(function(curr, idx) {
+                    console.log(countFrequency(curr,
+                        allPapers));
                     //words will now be an obj that has text, weight, and link
                     return {
                         text: curr,
-                        weight: countFrequency(curr, allPapers),
+                        weight: countFrequency(curr,
+                            allPapers),
                         link: ''
                     };
                 });

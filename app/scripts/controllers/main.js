@@ -34,7 +34,7 @@ angular.module('frontendApp')
                 color: '#438BD2',
                 strokeWidth: 2,
                 trailWidth: 2,
-                duration: 7500,
+                duration: 12000,
                 text: {
                     value: '0',
                     color: '#000000',
