@@ -23,8 +23,8 @@ angular.module('frontendApp')
             return empty;
         };
         /**
-         * [initProgressBar description]
-         * @param  {[]} [creates the loading bar and initiates progress of word cloud generation]
+         * [initializes the progress bar object on the main page and initiates progress of word cloud generation]
+         * @param  {callback} [calls another a function]
          * @return {[type]} line [returns the finished progress bar]
          */
         initProgressBar = function(callback) {
@@ -51,8 +51,8 @@ angular.module('frontendApp')
             return line;
         };
         /**
-         * [removeProgressBar description]
-         * @param  {[]} [removes the progress bar once it is done generating a search]
+         * [removes the progress bar once it is done generating a search]
+         * @param  {[]} []
          */
         removeProgressBar = function() {
             var removeProgress = document.getElementById('progress');
@@ -61,8 +61,8 @@ angular.module('frontendApp')
             $scope.nameSearch = '';
         };
         /**
-         * [displayWordCloud description]
-         * @param  {[type]} line, papers [removes the progress bar (via line) and generates the actual WC]
+         * [removes the progress bar (via line) and generates the actual WC]
+         * @param  {[line,papers]} [takes in a line object and a list of papers]
          */
         displayWordCloud = function(line, papers) {
             line.set(1);
@@ -74,8 +74,8 @@ angular.module('frontendApp')
             }, 100);
         };
         /**
-         * [makePreviousSearch description]
-         * @param  {[type ]} searchConfig [used for navigation button to generate the original WC when pressing 'back to cloud']
+         * [used for navigation button to generate the original WC when pressing 'back to cloud']
+         * @param  {[searchConfig]} [takes in a searchConfig]
          */
         $scope.makePreviousSearch = function(searchConfig) {
             if (searchConfig.input.trim()) {
@@ -88,9 +88,8 @@ angular.module('frontendApp')
             }
         };
         /**
-         * [launchNameSearch description]
-         * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
-                         search term and assign the words scope to the topWords of the paper]
+         * [uses the function 'getpapers' to get all research appers from the given search term and assign the words scope to the topWords of the paper]
+         * @param  {[phrase]} [takes in a search phrase]
          */
         $scope.launchNameSearch = function(phrase) {
             var line;
@@ -109,9 +108,8 @@ angular.module('frontendApp')
         };
 
         /**
-         * [launchKeywordSearch description]
-         * @param  {[]} [uses the function 'getpapers' to get all research appers from the given
-                         search term and assign the words scope to the topWords of the paper]
+         * [uses the function 'getpapers' to get all research appers from the given search term and assign the words scope to the topWords of the paper]
+         * @param  {[phrase]} [takes in a search phrase]
          */
         $scope.launchKeywordSearch = function(phrase) {
             var line;
